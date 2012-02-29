@@ -1,0 +1,59 @@
+.legenda {
+  width: 200px;
+  height: 140px;
+  position: absolute;
+  border: dashed gray 2px;
+  padding: 7px;
+}
+
+.green {
+  color: black;
+  width: 170px;
+  min-height: 24px;
+  height: auto;
+  top: 10px;
+  left: 10px;
+  background-color:  #c2e158;
+  position: relative;
+  text-align: center;
+  top: 10px;
+}
+
+.blue {
+  color: black;
+  width: 170px;
+  min-height: 24px;
+  height: auto;
+  top: 20px;
+  left: 10px;
+  background-color: #c2d8ed;
+  position: relative;
+  text-align: center;
+  height: auto;
+}
+
+.red {
+  color: black;
+  width: 170px;
+  min-height: 24px;
+  height: auto;
+  top: 30px;
+  left: 10px;
+  background-color: #FF0000;
+  position: relative;
+  text-align: center;
+  height: auto;
+}
+
+.geel{
+  color: black;
+  width: 170px;
+  min-height: 24px;
+  height: auto;
+  top: 30px;
+  left: 10px;
+  background-color: #fffdc5;
+  position: relative;
+  text-align: center;
+  height: auto;
+}

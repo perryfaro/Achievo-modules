@@ -1,0 +1,82 @@
+Achievo 'Billing' module installation instructions
+==================================================
+
+This installation guide assumes that you already have a working
+installation of achievo.
+
+Read this first
+---------------
+Depite our efforts to keep this INSTALL file as accurate as possible, there
+might be situations in which the described procedure does not work.
+In this case send an email to ivo@achievo.org or to the mailinglist
+(achievo@achievo.org) and we will try to help you out.
+
+Requirements
+------------
+
+* A working Achievo installation, version 1.2.1 or higher.
+* OpenDocument generator support (requires access to the Info-ZIP zip and
+  unzip binaries)
+
+Installation steps
+------------------
+
+1. Unpack the tgz distribution.
+
+   change to the directory where you want to install the module, e.g.:
+   $ cd /home/achievo/achievo_modules
+
+   unpack the tgz file:
+   $ tar xvzf billing.tgz
+
+   This will create a directory 'billing' which contains everything
+   needed to use the billing module.
+
+2) Open up Achievo's config.inc.php file and locate the modules setting
+   near the bottom of the file. Add the following line to add the Billing
+   module to Achievo:
+
+   module("billing", "../achievo_modules/billing/");
+
+   The first parameter is the name of the module, and should always be
+   'billing'. The second parameter points to the directory where the module
+   is located, relative to the directory of Achievo itself.
+
+3. Add tax symbol/included setting and currency symbol to 'config.inc.php'.
+
+   Put the following additional config variables into 'config.inc.php'
+   (example for Switzerland):
+
+   $config_tax_symbol = "MWSt.";     // Name of the tax
+   $config_tax_included = true;      // Tax included in prices or not?
+   $config_currency_symbol = "Fr.";  // Currency used as the default
+
+4. Run Achievo setup to create the nescessary database structures.
+
+   Point your browser to the setup.php script in the Achievo directory. For
+   example:
+
+   http://yourserver/achievo/setup.php
+
+   You'll be prompted to login. Enter 'administrator' as username and the
+   password you've set in your config.inc.php file. Now the Achievo setup
+   wizard will be shown. Follow the on-screen instructions.
+
+5. Granting rights
+
+   If everything went ok, you should get a "Installation complete" message.
+   Click "Start using Achievo", go to the Employees menu. You should now
+   be able to create or adjust Security profiles in order to give employees
+   access to the features of the billing module.
+
+6. Ready to go
+
+   After completing the steps above, you should be ready to use the billing
+   features. Open the included README or manual.pdf file to learn about how
+   to use the Billing module.
+
+Additional notes
+----------------
+
+Previous versions of the billing module used to support pdf generation.
+Currently this is disabled in favour of OpenDocument format bills.

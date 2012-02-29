@@ -1,0 +1,14 @@
+table.recordList .greenlight
+{
+  background-color: #00D000;
+}
+
+table.recordList .yellowlight
+{
+  background-color: #FF9900;
+}
+
+table.recordList .redlight
+{
+  background-color: #FF0000;
+}

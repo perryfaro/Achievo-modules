@@ -1,0 +1,386 @@
+<?php
+ /*
+  * @Author Ivo Jansch <ivo@achievo.org>
+  *
+  * Loosely based on the 'corvee' module by Michiel Schalkx, but
+  * with lots of improvements.
+  *
+  * This script can be run on any day. It will schedule the coming
+  * week (starting with the day on which the script is run).
+  * If this week was already scheduled, the entries are re-scheduled.
+  * (keeping the history up-to-date)
+  *
+  * @version $Revision: 2577 $
+  *
+  * $Id: schedule.cron 2577 2007-07-18 13:53:17Z guido $
+  */
+  
+  // Read the mailto configuration variable
+  $config_autoduty_mailto = atkConfig::get("autoduty", "mailto", atkConfig("autoduty_mailto", ""));
+  if (empty($config_autoduty_mailto))
+  {
+    die("No autoduty mailto address configured\n");
+  } 
+
+  echo "started autoduty.schedule\n";
+  
+  srand((double)microtime()*1234567);
+  
+  // Define some constants for days
+  define("SUN", 0);
+  define("MON", 1);
+  
+  // Name lookup, for smart naming.
+  $g_namelookup = array();
+   
+  // find out on what day we're running.
+  // Policy: if running on monday, we make the schedule for the
+  // current week. If we run after monday, we make the schedule
+  // for next week.
+  // The next nifty line of code determines the 'nearest' monday after today
+  // (if today is monday, $monday will be today. If it's any other day today, 
+  // $monday will automagically be the timestamp of the nearest monday after today).
+  $monday = mktime(12,0,0,date("m"), date("d")+((8-date("w"))%7), date("Y"));
+   
+  // Determine the dates for the entire week.
+  $weekdates = array();
+  for ($i=0; $i<7;$i++) // mind you that this loop starts at 0, but this is monday.
+                        // So this is not a day-mapping. Therefor, we use $dayIdx to
+                        // store the dates in $weekdates; $weekdates *is* daymapped.
+  {
+    $stamp = $monday+(86400*$i);
+    $dayIdx = date("w", $stamp);
+    $weekdates[$dayIdx]['date']=date("Y-m-d" ,$stamp);
+    $weekdates[$dayIdx]['day']=text(strtolower(date("D" ,$stamp)));    
+  }
+   
+  // Get some nodes we need.
+  $jobnode = getNode("autoduty.job");
+  $joblognode = getNode("autoduty.joblog");    
+  
+  //get db object
+  $db = &atkGetDb();
+  
+  // Auto clean-up. The joblog table can become quite big. Therefor, we delete 
+  // all entries older than a few months. The consequence is that you cannot look 
+  // back further than this period. 
+  // Note that we cannot just call deleteDb() on the joblognode, because doing
+  // so will cause a decrease of the jobcount entries of the employees.
+  // This is a cleanup, so the log must be deleted, while the jobcount fields
+  // need to remain intact. Therefor, we perform a manual query.
+  $threemonthsago_stamp = mktime(12,0,0,date("m")-3, date("d"), date("Y"));
+  $query = "DELETE FROM autoduty_joblog WHERE jobdate<'".date("Y-m-d",$threemonthsago_stamp)."'";
+  
+  $db->query($query);
+  echo $query."\n";
+
+   
+  // There could already have been made a schedule for the week we are 
+  // planning (for example, the script may have been already run this week). 
+  // In this case, we remove all entries and reschedule.
+  $oldschedule = $db->getrows("SELECT 
+                                   * 
+                                 FROM 
+                                   autoduty_joblog
+                                 WHERE
+                                   jobdate BETWEEN '".$weekdates[MON]['date']."' AND '".$weekdates[SUN]['date']."'");
+  for ($i=0, $_i=count($oldschedule); $i<$_i; $i++)
+  {
+    // for each of the old entries, decrease the jobcount and remove the entry.    
+    $joblognode->decrease($oldschedule[$i]['userid'], $oldschedule[$i]['job_id'], $oldschedule[$i]['appliedfactor']);
+    $query = "DELETE FROM autoduty_joblog WHERE id=".$oldschedule[$i]["id"];
+    
+    $db->query($query);
+    echo $query."\n";
+  }        
+
+  // Get the list of jobs.  
+  $jobs = $jobnode->selectDb("", "id", "", "", array("id", "name", "description", "days", "schedulefreq", "required", "optimal", "scheduletype"));
+      
+  for ($i=0, $_i=count($jobs); $i<$_i; $i++)
+  {
+    $job = $jobs[$i];
+    
+    // check if 'optimal' is never less than 'required'
+    $job["optimal"] = max($job["optimal"], $job["required"]);
+    
+    // Get list of employees that can be scheduled to do this job.
+    $emps = $db->getrows("SELECT 
+                              e.id as userid, e.lastname, e.firstname, c.workingdays, a.jobcount, c.uc_hours, max(l.jobdate) as lastjob
+                            FROM
+                              person e,
+                              usercontract c,
+                              autoduty_employeejobs a
+                              LEFT JOIN autoduty_joblog l ON (l.userid = a.userid AND l.job_id = ".$job["id"].")
+                            WHERE
+                              e.status = 'active'
+                              AND e.id = a.userid
+                              AND a.job_id = ".$job["id"]."                              
+                              AND e.id = c.userid AND ('".date("Y-m-d",$monday)."' BETWEEN c.startdate AND c.enddate
+                                                       OR (c.startdate<='".date("Y-m-d", $monday)."' AND c.enddate IS NULL))
+                            GROUP BY 
+                              e.id, c.workingdays, a.jobcount, c.uc_hours
+                            ORDER BY
+                              a.jobcount, lastjob");
+                              
+//    $jobdays = explode("|", $job["days"]);            
+    $jobdays = $job["days"]; // in current ATK version, the days field is already converted to an array.
+    
+    if (count($emps))
+    {
+      
+      smartEmpNames($emps);
+         
+                                
+      if ($job["schedulefreq"]=="daily")
+      {
+      
+        // For each day that a job must be done, find a set of people.
+        for ($j=0, $_j = count($jobdays); $j<$_j; $j++)
+        {
+          $day = $jobdays[$j];                      
+          
+          // for as many people as we need, do the assignments..         
+          $excludes = array();         
+          $names = array();
+          for ($k=0; $k<$job["optimal"]; $k++)
+          {
+            // Find the first available person who can do the job today.
+            $who = fetchFirst($emps, $day, true, $excludes, false);
+            $excludes[] = $who['userid'];
+            //save($who, $day, $job["id"]);          
+            updateHistory($who["userid"], $job["id"], $weekdates[$day]["date"], $who["uc_hours"]);
+                      
+            $names[] = $who["userid"];
+          }
+                  
+          $jobs[$i]['planning'][] = array('day'=>$weekdates[$day]["day"], 'date'=>$weekdates[$day]["date"],
+                                          'emps'=>$names);
+        }
+      }
+      else if ($job["schedulefreq"]=="weekly")
+      {  
+        $whoQueue = array();
+        for ($j=0, $_j = count($jobdays); $j<$_j; $j++)
+        {
+          $excludes = array();        
+          $day = $jobdays[$j];
+                  
+          $names = array();
+          for ($k=0; $k<$job["optimal"]; $k++)
+          {        
+            $found = false;
+            while (!$found)
+            {
+              $who = fetchFirst($whoQueue, -1, false, $excludes, ($job["scheduletype"]=="r"));
+              if (!count($who))
+              {
+                // nobody found in whoQueue. stop looking.
+                break;
+              }
+              else
+              {
+                $excludes[] = $who["userid"];
+                $whoQueue[] = $who;
+                $empdays = explode("|", $who["workingdays"]);
+                if (in_array($day, $empdays))
+                {
+                  // found!
+                  $found = true;
+                
+                }
+                else
+                {
+                  // darn, the person we selected doesn't work today.
+                  // We've put him in the whoqueue, because he's been
+                  // selected for this week, and we might reuse him
+                  // for tomorrow.
+                }
+              }
+            }
+                              
+            if (!$found && count($whoQueue)<$job["required"])
+            {
+              // Nobody from the queue for this week is available on this day. So,
+              // we must select someone from the complete stack for today.
+              // The first available person who *can* do the job on this day, 
+              // is selected as backup for the entire week. (even if that person
+              // does not have the highest priority. This will be straightened
+              // out in following weeks).
+              // backups are only selected if we didn't reach the minimum required
+              // number of people for the job yet.
+              $who = fetchFirst($emps, $day, false, $excludes, ($job["scheduletype"]=="r"));
+              if (count($who))
+              {              
+                $excludes[] = $who["userid"];
+                $whoQueue[] = $who;                      
+              }
+              
+            }
+               
+            if (count($who))
+            {
+              updateHistory($who["userid"], $job["id"], $weekdates[$day]["date"], $who["uc_hours"]);
+              $names[] = $who["userid"]; 
+              
+            }          
+          }
+           
+          $jobs[$i]['planning'][] = array('day'=>$weekdates[$day]["day"], 'date'=>$weekdates[$day]["date"],
+                                          'emps'=>$names);        
+        }            
+      }    
+    } 
+  }    
+  
+  // Second stage, create mail.
+  foreach ($jobs as $job)
+  {
+    $body.=$job["name"]."\n";
+    
+    $body.=str_repeat("-",50)."\n";
+    if ($job["description"]!="")
+    {
+      $body.=$job["description"]."\n\n";
+    }
+    
+    if (count($job["planning"]))
+    {
+      foreach ($job["planning"] as $day)
+      {
+        $body.=$day["day"]." (".$day["date"]."): ";        
+        $names = array();
+      
+        foreach ($day["emps"] as $uid)
+        {
+          $names[] = $g_namelookup[$uid];
+        }
+        //sort($names);
+        $body.=implode(", ", $names)."\n";
+      }
+    }
+    else
+    {
+      $body.="Planning failed!\n";
+    }
+    
+    $body.="\n\n";
+  }
+  
+  
+  
+      
+  $strdate = date("W", $monday)." (".date("d-m-Y", $monday).")";
+  $body = str_replace("\n","\r\n",$body);
+  usermail($config_autoduty_mailto, sprintf(text("subject_dutyscheduleforweek", "job", "autoduty"), $strdate), $body);
+  echo "sent mail to : ".$config_autoduty_mailto."\n";
+  
+  echo "finished autoduty.schedule\n";
+  
+  function fetchFirst(&$emps, $jobday=-1, $mark=true, $excludes=array(), $random=false)
+  {    
+    $found = false;
+    $res = array();
+    if (!$random) // structured assignments
+    {
+      for ($i=0, $_i=count($emps); $i<$_i && !count($res); $i++)
+      {
+        $daysworking = explode('|', $emps[$i]['workingdays']);
+        if (!in_array($emps[$i]['userid'], $excludes) && ($jobday==-1 || in_array($jobday, $daysworking)))
+        {        
+          // This person can do the job on this day.                        
+          $res = $emps[$i];
+          
+          // We put the employee to the end of the array, so he will
+          // not be rescheduled until all other people have had their turn.
+	        if ($mark)
+	        {
+            array_splice($emps, $i, 1); // remove from array at the position we found him        
+            $emps[] = $res; // re-add to the end
+          }
+        }      
+      }
+    }
+    else // random assignments
+    {
+      for ($i=0; count($res)==0 && $i<100; $i++) // the <100 is for endless loop protection
+      {
+        $randomselect = rand(0,count($emps)-1);
+        $daysworking = explode('|', $emps[$randomselect]['workingdays']);
+        if (!in_array($emps[$randomselect]['userid'], $excludes) && ($jobday==-1 || in_array($jobday, $daysworking)))
+        {        
+          // This person can do the job on this day.                        
+          $res=$emps[$randomselect];
+        }
+      }
+    }
+    return $res;
+  }  
+  
+  function updateHistory($userid, $job_id, $date, $contracthours)
+  {
+    $db = &atkGetDb();
+    $id = $db->nextid("autoduty_joblog");
+    
+    // Determine 'contractfactor'.
+    // This basically boils down to this: 
+    // If person A works 8 hours in a week, then a job he does will count 5 
+    // times as heavy as person B who works 40 hours in a week. 
+    // This is fair, because now both persons do the job the same percentage
+    // of their working time. 
+    // So the 'contract factor' is 1 for someone who works fulltime (40hpw),
+    // and 40/8=5, for someone who works one day (8hpw).
+    if ($contracthours==0)
+    {
+      // No contract. Assume contractfactor 1.
+      $contractfactor = 1;
+    }
+    else
+    {
+      $contractfactor = 40/$contracthours;
+    }
+    $query = "INSERT INTO autoduty_joblog (id, jobdate, userid, job_id, appliedfactor) 
+                        VALUES ($id, '$date', '$userid', $job_id, $contractfactor)";
+    $db->query($query);
+    echo $query."\n";
+    
+    // also  update the jobcounter in the autoduty_employeejobs table.
+    $query = "UPDATE autoduty_employeejobs SET jobcount=jobcount+$contractfactor WHERE job_id = $job_id AND userid ='$userid'";
+    $db->query($query);
+    echo $query."\n";
+  }
+  
+  /**
+   * This function analyses employee names. If firstnames occur more than
+   * once, the lastname is included in the name. For unique names, only
+   * the first name is shown (for brevity).
+   */
+  function smartEmpNames(&$emps)
+  {
+    static $s_namecounter = array();
+    global $g_namelookup;
+    for ($i=0, $_i=count($emps); $i<$_i; $i++)
+    {
+      $firstname = $emps[$i]["firstname"];
+     if (!in_array($firstname, array_keys($s_namecounter)) || $s_namecounter[$firstname]['lastname']==$emps[$i]['lastname']) 
+      {
+        // person with this firstname not yet found. Or it is found, but it's 
+        // the same person (same lastname)
+        $s_namecounter[$firstname]['index'] = $i; // keep track of index.
+        $s_namecounter[$firstname]['lastname'] = $emps[$i]['lastname']; 
+        // keep track of lastname, so we don't count the same person twice.
+        $g_namelookup[$emps[$i]["userid"]] = $emps[$i]['firstname'];
+      }
+      else 
+      {
+        // Name already exists. Both occurences should receive the lastname.
+        $orgindex = $s_namecounter[$firstname]['index'];
+        $orgemp = $emps[$orgindex];
+        $g_namelookup[$orgemp['userid']] = $orgemp['firstname'].' '.$orgemp['lastname']; 
+        $g_namelookup[$emps[$i]['userid']] = $emps[$i]['firstname'].' '.$emps[$i]['lastname'];
+      }
+      
+    }
+  }
+
+?>

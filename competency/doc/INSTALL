@@ -1,0 +1,52 @@
+Installing the 'competency' Achievo module
+========================================
+
+Read this first
+---------------
+
+
+Requirements
+------------
+The latest svn version of atk that supports Prototype 1.6.0.2 and  Scriptaculous 1.8.1
+
+
+Installation Procedure
+----------------------
+
+1) Place the files from the module in your Achievo external modules directory.
+   Preferably, this is a directory just outside the Achievo root. For example,
+   if your Achievo installation is located in /var/www/html/achievo-1.0, put
+   this module in /var/www/html/achievo_modules/competency.
+
+   If the server makes dynamic domains its important to put the module in the achievo map itself
+    /var/www/html/achievo/achievo_modules/competency for example because the scripts need access
+   to sertain java and php scrips in this module that it will be unable to find if the achievo_modules
+   are in a diffent domain.
+
+2) Open up Achievo's config.inc.php file and locate the modules setting near
+   the bottom of the file. Add the following line to add the competency module
+   to Achievo:
+
+   module("competency", "../achievo_modules/competency/");
+
+   The first parameter is the name of the module, and should always be
+   'autoduty'. The second parameter points to the directory where the module
+   is located, relative to the directory of Achievo itself.
+
+3) Log out of Achievo, and point your browser to the setup.php script in the
+   Achievo directory, for example:
+
+   http://yourserver/achievo-1.0/setup.php
+
+4) Log in as the 'administrator' user, and follow the directions. If steps 1
+   and 2 went ok, the setup script will indicate that it will have to install
+   the competency module in the database.
+
+   If the installation went well, you should have 1 new menu item in Achievo
+   called 'competencye management','. (You must grant access to users to the new features,
+   using the profile editor in the Employee menu.)
+
+5) The core feature of the module is adding and managing of competences
+
+6) See the README file for usage instructions.
+

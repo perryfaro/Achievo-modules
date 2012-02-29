@@ -1,0 +1,64 @@
+<?php
+  /**
+   * Dutch language definition file
+   *
+   * @package achievo_modules
+   * @subpackage weekplanning
+   *
+   * @author guido <guido@ibuildings.nl>
+   * @author ivo <ivo@ibuildings.nl>
+   *
+   * @copyright (c) 2005 Ibuildings.nl BV
+   * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2
+   *
+   * @version $Revision: 3686 $
+   * $Id: nl.lng 3686 2006-09-13 13:17:21Z harrie $
+   */
+
+  // Load the array of language definitions
+  $nl = array(
+   "add_week"=>"Week toevoegen",
+   "employee_week"=>"MW/WK",
+   "holiday"=>"Vakantie",
+   "invaliddateperiod"=>"Ongeldige datumperiode.",
+   "menu_weekplanning"=>"Weekplanning",
+   "menu_weekplanning_peremployee"=>"Weekplanning per medewerker",
+   "menu_weekplanning_perproject"=>"Weekplanning per project",
+   "menu_weekplanningconflicts"=>"Conflicten",
+   "noemployeesmatchingcriteria"=>"Er zijn geen medewerkers die aan de criteria voldoen.",
+   "noprojectsmatchingcriteria"=>"Er zijn geen projecten die aan de criteria voldoen.",
+   "left"=>"Over",
+   "per_employee"=>"Per medewerker",
+   "per_project"=>"Per project",
+   "period_from"=>"Periode van",
+   "remove_week"=>"Week verwijderen",
+   "to"=>"Tot",
+   "weekplanning"=>"Weekplanning",
+   "weekplanning_peremployee"=>"Weekplanning per medewerker",
+   "weekplanning_perproject"=>"Weekplanning per project",
+   "new"=>"Nieuw",
+   "persistent"=>"Aanhoudend",
+   "resolved"=>"Opgelost",
+   "ignored"=>"Genegeerd",
+   "overruled"=>"Verworpen",
+   "project_fixed_price"=>"Totaal budget",
+   "project_weekplanning_employee_budget"=>"Personeel budget",
+   "total_planned"=>"Totaal ingepland",
+   "yet_to_plan"=>"Nog in te plannen",
+   "planned_too_much"=>"Teveel ingepland",
+   "weekplanning_avaragerate"=>"Gemiddeld tarief",
+   "weekplanningconflictlog"=>"Weekplanning conflicten",
+   "conflict"=>"conflict",
+   "timestamp"=>"Tijdstip",
+   "type"=>"Type",
+   "actorid"=>"Ontstaan door",
+   "weekplan_exceeds_currentplan" => "Weekplanning overschrijdt faseplanning",
+   "planned_exceeds_team_capacity" => "Weekplanning overschrijdt capaciteit",
+   "booked_nears_planned" => "Tijdregistratie nadert planning",
+   "booked_exceeds_planned" => "Tijdregistratie overschrijdt plannnig",
+   "employee_underplanned" => "Medewerker niet voldoende ingepland",
+   "planned_exceeds_employee_contract" => "Planning overschrijdt contract",
+   "planned_exceeds_employeebudget" => "Planning overschrijdt personele budget",
+   "estimate" => "Begroot",
+  );
+?>

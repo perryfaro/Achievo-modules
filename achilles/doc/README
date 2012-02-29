@@ -1,0 +1,21 @@
+'Achilles' Achievo module usage instructions
+==============================================
+
+1. What is it?
+--------------
+The 'achilles' module is a module that can be used for as a ticket system.
+
+
+2. Assumptions
+--------------
+1) You should have activated the achilles module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+   
+3. Instructions
+---------------
+After installation of the module, a new menuitem 'Achilles' is added
+to main menu of Achievo. 
+The Achilles management screens are quite self explanatory. Questions may be 
+posted on the Achievo forum (http://www.achievo.org/forum)

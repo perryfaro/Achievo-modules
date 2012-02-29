@@ -1,0 +1,43 @@
+'Profilesheet' Achievo module usage instructions
+==============================================
+
+1. What is it?
+--------------
+The 'Profilesheet' module is a module that makes administration of Achievo
+extension modules much more easy. It displays installed modules, installation
+status, and allows you to deinstall, install and patch modules.
+
+
+2. Assumptions
+--------------
+1) You should have activated the moduleinfo module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+   
+3. Instructions
+---------------
+After installation of the module, a new menuitem 'Extension modules' is added
+to the 'setup' menu of Achievo. Initially, the 'Extension modules' menuitem is
+only accessible by the Administrator user, but using the Administrator user,
+you can grant access to the module to other users using the profile editor in
+the employee menu.
+
+It is advisable to grant access to this module only to the maintainers of the
+Achievo installation, since the module allows the user to de-install modules, 
+destroying any data present in the system.
+
+When opening the menuitem, you will see a list of installed modules. For each
+module, one or more of the following actions may be available:
+
+'install'       -> Install a module. This will create the tables it needs etc.
+'uninstall'     -> Remove a module. This will destroy any tables and data
+                   associated with the module. 
+'patch'         -> If the module sources are newer than the modules' tables, a
+                   'patch' action is provided to upgrade the database.
+'documentation' -> View the doc/README file of the module (if available).
+
+IMPORTANT: Modules should be activated/deactivated using the config.inc.php
+file of Achievo. The 'moduleinfo' module can not and will not modify this file
+for you. Therefor, before installing any module into the database, first
+activate it in the config.inc.php file.

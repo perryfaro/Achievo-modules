@@ -1,0 +1,8 @@
+<?php
+  $nl = array(
+    "functionlevel_name" => "Niveau",
+    "lower_levels" => "en lagere niveau's",
+    "no_levels" => "Er zijn geen functieniveau's beschikbaar.",
+    "view_level" => "Iedereen met een lagere level bekijken"
+  );
+?>

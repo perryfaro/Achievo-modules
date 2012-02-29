@@ -1,0 +1,213 @@
+<?php
+
+  /**
+   * Converts an array representing the values of a record to CSV format
+   *
+   * @param Array $values Array containing the values in the record
+   * @return String CSV format line including newline character
+   */
+  function csvLine($values)
+  {
+    $escapedvalues = array();
+    foreach ($values as $value)
+      $escapedvalues[] = '"' . str_replace('"', '""', $value) . '"';
+    $line = implode(',', $escapedvalues) . "\n";
+    return $line;
+  }
+
+  /**
+   * Reads the date/accountviewnumber records that need updating
+   *
+   * @return Array Array of associative arrays representing the
+   *         projectdayneedsupdate records and the related project
+   *         abbreviation (accountviewnumber)
+   */
+  function getProjectDays()
+  {
+    // Directly access the database and get the dates/accountviewnumbers that need updating
+    $db = &atkGetDb();
+    $query = &$db->createQuery();
+    $query->addTable('projectdayneedsupdate');
+    $query->addJoin('project', '', 'projectdayneedsupdate.project_id=project.id', true);
+    $query->addField('project_id', ' ', 'projectdayneedsupdate');
+    $query->addField('day', ' ', 'projectdayneedsupdate');
+    $query->addField('abbreviation', ' ', 'project');
+    $query->addField('name', ' ', 'project');
+    $querystring = $query->buildSelect(true);
+    $projectdays = $db->getrows($querystring);
+    return $projectdays;
+  }
+
+  /**
+   * Composes the query to retrieve hour data for a project/day which still has to be set
+   *
+   * @return String SQL Query template
+   */
+  function getHoursByProjectDayQueryTemplate()
+  {
+    // Pre-create the hours query
+    $db = &atkGetDb();
+    $hoursquery = &$db->createQuery();
+    $hoursquery->addTable('hours');
+    $hoursquery->addJoin('phase', '', 'hours.phaseid=phase.id', true);
+    $hoursquery->addField('time', ' ', 'hours');
+    $hoursquery->addField('billing_rate', ' ', 'hours');
+    $hoursquery->addCondition("hours.activitydate='%s'");
+    $hoursquery->addCondition("phase.projectid='%d'");
+    $hoursquerystringtpl = $hoursquery->buildSelect(false);
+    return $hoursquerystringtpl;
+  }
+
+  /**
+   * Determines the filename (including path) to be used for export
+   *
+   * @return String Filename (including path) to be used for export
+   */
+  function getFileName()
+  {
+    // If a file parameter is given, use it
+    if (array_key_exists("argv", $_SERVER) && array_key_exists(2, $_SERVER["argv"]))
+    {
+      $filename = $_SERVER["argv"][2];
+    }
+
+    // Else determine the filename/location by config and safe fallback defaults
+    else
+    {
+      // Determine the location by config (falls back to the export subfolder of the accountview module)
+      $filename = atkConfig("accountview_exportpath", moduleDir("accountview") . "export/");
+
+      // Append the filename to the path
+      atkimport("atk.utils.atkstringparser");
+      $stringparser = new atkStringParser(atkConfig("accountview_filenametpl", "[date].csv"));
+      $filename .= $stringparser->parse(array("date"=>date("Ymd"),"time"=>date("Hi")));
+    }
+
+    // Return the full filename
+    return $filename;
+  }
+
+  /**
+   * Removes all projectdayneedsupdate records
+   */
+  function clearProjectDayNeedsUpdateRecs()
+  {
+    $db = &atkGetDb();
+    $db->query("DELETE FROM projectdayneedsupdate");
+    $db->commit();
+  }
+
+  /**
+   * Performs the hours export
+   *
+   * @return Boolean Succesfull or not
+   */
+  function exportHoursInternal()
+  {
+    // Get a db reference
+    $db = &atkGetDb();
+
+    // Read all project/day combinations that need an update
+    $projectdays = getProjectDays();
+
+    // Get the hoursquery template string
+    $hoursquerystringtpl = getHoursByProjectDayQueryTemplate();
+
+    // Determine the export filename
+    $filename = getFileName();
+
+    // Report the export filename
+    echo("Exporting to $filename\n");
+
+    // Open the export file and return false if failed
+    if (!$filehandle = fopen($filename, "x")) {
+      echo("Cannot open $filename for write access.\nMaybe this file already exits or appropriate rights are missing?\n");
+      return false;
+    }
+
+    // Report the number of project/day combinations which are about to be exported
+    echo(sprintf("%d project/day combinations require an export\n", count($projectdays)));
+
+    // Loop through all project/day combinations
+    for($i=0, $_i=count($projectdays); $i<$_i; $i++)
+    {
+      $projectday = $projectdays[$i];
+
+      // Get all hours for the current project/day
+      $hoursquerystring = sprintf($hoursquerystringtpl,
+                                  $projectday["day"],
+                                  $projectday["project_id"]);
+      $hours = $db->getRows($hoursquerystring);
+
+      // Report the number of hour registrations and the project/day which are about to be exported
+      echo(sprintf("Exporting all %d time registrations for project '%s' on %s\n", count($hours), $projectday["abbreviation"], $projectday["day"]));
+
+      // Loop through all found time registrations
+      for($j=0, $_j=count($hours); $j<$_j; $j++)
+      {
+
+        // Compose the csv record to be exported
+        $hour = $hours[$j];
+        $values = array(
+          $projectday["abbreviation"],
+          $projectday["day"],
+          $hour["time"]/60,
+          round($hour["time"]/60*$hour["billing_rate"])
+        );
+        $csvline = csvLine($values);
+
+        // Write the csvline and close the file and return on failure
+        if (!fwrite($filehandle, $csvline)) {
+          echo("Cannot write data to file $filename (disk full?).\n");
+          fclose($filehandle);
+          return false;
+        }
+      }
+    }
+
+    // Close the file handle
+    fclose($filehandle);
+
+    // Remove the projectdayneedsupdate records
+    clearProjectDayNeedsUpdateRecs();
+
+    // Return succesfully
+    return true;
+  }
+
+  /**
+   * Reports the start and finish of the job and runs the internal exporthours function
+   *
+   * @return int Exitcode (0 if succesfull, 1 if not)
+   */
+  function main()
+  {
+    // Report the start
+    echo("Starting cronjob: exporthours.cron\n\n");
+
+    // Run the internal exporthours function
+    $result = exportHoursInternal();
+
+    // Report the overall result (successfull or not)
+    if ($result)
+    {
+      echo("Hours were succesfully exported.\n");
+    }
+    else
+    {
+      echo("An error occurred while exporting hours. Export was not succesfull!\n");
+    }
+
+    // Report the finish
+    echo("\nFinished cronjob: exporthours.cron\n");
+
+    // Return exit code
+    return $result ? 0 : 1;
+  }
+
+  // Run the main function
+  $exitcode = main();
+
+  // Exit
+  exit($exitcode);
+?>

@@ -1,0 +1,39 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in holidayreport 1.0.2
+------------------------------
++ When sick_leave module exists, activities with count_as='count as holiday' count
+  as holiday in employee_week_report and in employee holiday report. [Yury]
++ Added support for different holiday_rules per organization 
+  Please take into account, that you manually need to set the default organization_id
+  for the different rules. [Yury]
++ Added holidayhours column to the weekreport node from within the
+  holidayreport module [Dennis].
+* Replaced addColumn call by installNode in patch to prevent an error when
+  upgrading from holidayreport patchlevel 2 or 1. [Guido]
+* The number of holidays were calculated on entire months. Fixed, so when an
+  employee works until the 15th of june he gets 5,5 months of holidays,
+  not 5. [Harrie]
+* Moved $config_holidayreport_round and $config_holidayreport_fulltime to
+  configs/holidayreport.inc.php (please update this file when upgrading
+  this module on your Achievo installation). [Guido]
+* Fixed month/monthafter calculation types for holiday rules to take the
+  amount of hours (compared to a fulltime week) and the contract start/end
+  dates into account.
+* Fixed missing leave from leave rules in the holidayreport overview (totaaloverzicht)
+  for all employees. Now the overview shows the same values as the per-employee view.
+  [Guido]
+* Fixed calculation error in month/monthafter calculation types. [Guido]
+
+Changes in Holidayreport 1.0.1
+------------------------------
+* Several codechanges to make holidayreport work with new atk version. [Dennis]
++ Added German translation. [Udo]
+
+Changes in Holidayreport 1.0.0
+----------------------------
++ Initial version [Lineke]

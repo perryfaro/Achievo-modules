@@ -1,0 +1,71 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in Weektimereg 1.1.0
+----------------------------
++ Added a config to seperate the project/phase column. [dennisjan]
++ Added a config where you can choose if you want to use a calendar in
+  stead of a dropdownbox with the weeknumbers. [dennisjan]
++ Added possibility to display the bookable projects and phases by team.[Harrie]
++ It is now possible to hide the 'add project/phase/activity' link using a
+  configuration setting (usefull when displaying 'byteam'). [Harrie]
++ When 'weektimereg' and 'billing' modules are both used, weektimereg will
+  display whether or not there have been expenses this week and show a link
+  to go to the expenses screen directly. [Harrie]
++ It is now possible to select a default activity (using the configfile) with
+  dropdowns to select different activities. [Harrie]
+* Fixed MySQL 5 compatibility. [Guido]
+* Module is now compatible with Achievo 1.1. [Ruhshad]
+* Now using the atkNode->genericPage function instead of manually rendering
+  a box. This also adds the page trail. [Guido]
+* Fixed an unequal number of columns in the footer. [Guido]
+* Consolidated all date fields to adhere to the format specified in the
+  language files. [Ivo]
+* Prevented invalid SQL query when phase is deleted on which hours are
+  planned in the weekplanning. [Guido]
+* Daytotals should be coloured green, but left uncoloured when they don't
+  exceed the daily limit. [Guido]
+* Currently selected date in time registration will be globally stored so
+  when you return to the time registration after using some other funcitons
+  of achievo, you will still be at the same date. [Guido]
+* Added option to automatically show active projects matching the viewed
+  week without having to enable the "Always show in time registration"
+  option for each project. [Guido]
+* Added option to automatically show active projects matching the viewed
+  week without having to enable the "Always show in time registration"
+  option for each project. [Guido]
+* When adding projects/phases/activities, they will now be remembered
+  after you click the save button or choose another project/phase/activity.
+  [Guido]
+* Moved the sorting functions into the weekhours class. [Guido]
+* The table now shows and sorts by the project abbreviations (projectcodes)
+  [Guido]
+* Fixed php warning and sql error. [Guido]
+* Fixed SQL error. [Guido]
++ Added missing field to query. [Guido]
+* PHP short openings tags should not be used. [Guido]
+* Made expense columns only visible when a user has the admin right on
+  expenses. [Guido]
+* Fixed a bug where you would be able to click Save in a blocked week,
+  which resulted in all the data for that week to be erased. [Guido]
+* Fixed a bug that caused a project/phase/activity to appear twice after
+  adding it, filling it with some hours and clicking Save. [Guido]
+* Weektimereg module now supports monthly locking. (bug #758) [Rogerk]
+* Don't limit the amount of automatically visible projects to 100 when
+  project folding/collapsing is enabled. A limit of 1000 will do beter.
+  [Guido]
+
+Changes in Weektimereg 1.0.1
+----------------------------
++ Added possibility for cumulative contracts. [Lineke]
+* Fixed small bugs in save of custom entries. [Ivo]
++ Added ability to hide activities that require a remark (bug #251). [SLeblanc]
++ Added ability to display time on such activities as read-only. [SLeblanc]
++ Added German translation. [Georg, Udo]
+
+Changes in Weektimereg 1.0.0
+----------------------------
++ Initial version [Lineke]

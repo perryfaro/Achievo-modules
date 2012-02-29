@@ -1,0 +1,38 @@
+'Software' Achievo module usage instructions
+============================================
+
+1. What is it?
+--------------
+The 'software' module is a module for tracking software licenses. If you are 
+a reseller of software, or if you are a company managing software licenses 
+for your customers, this module can help you administrate those licenses.
+
+
+2. Assumptions
+--------------
+1) You should have activated the software module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+2) The user you are going to use to setup the software module should have 
+   access to the relevant menuitems. Use the profile editor in the Employee
+   menu to accomplish this.
+   
+3) Users in Achievo should have a contract. The contract (which can be added/
+   edited when editing the employee record) defines on which days the user
+   works and for how many hours a week. This information is used to determine
+   the planning. 
+   
+   
+3. Instructions
+---------------
+
+3.1 Adding software.
+
+  Software is currently added on a project basis. Edit the project for which
+  licenses were acquired. There is an 'Assets' tab in the project edit screen,
+  which allows you to view, add and edit licenses.
+
+3.2 Searching licenses.
+
+  In the Assets menu item, there's an item to search for licenses.

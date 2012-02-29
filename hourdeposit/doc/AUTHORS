@@ -1,0 +1,41 @@
+Author
+------
+Ivo Jansch         <ivo@achievo.org>
+
+
+Sponsors
+--------
+Development of the hourdeposit module was sponsored by Plan42 GMBH 
+(http://www.plan42.de)
+
+
+Translators
+-----------
+Translations for this module are currently only available in a few
+languages. If you are willing to translate the module, please see the 
+english.lng file in the languages/ directory and mail your translation to
+translations@achievo.org.
+                                
+The following people contributed translations:
+ 
+Dutch : Ivo Jansch     <ivo@achievo.org>
+German: Georg Scheidel <Georg.Scheidel@philotech.net>
+        Udo Werner     <udo_werner@gmx.net>
+
+
+Major Contributors
+------------------
+We like to thank the following people for their significant contributions to
+this module.
+
+Christian Lotz <cl@plan42.de>
+
+  Christian came with the idea for the module, and was largely responsible for
+  the definition of desired functionality.
+
+  
+Other Contributors
+------------------
+We received bugfixes and other contributions from the following people:
+
+

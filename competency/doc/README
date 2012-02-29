@@ -1,0 +1,97 @@
+'Autoduty' Achievo module usage instructions
+============================================
+
+1. What is it?
+--------------
+The 'competency' module is a tool to manage competences and generate reports and graphs 
+for the competences in the company 
+
+
+2. Assumptions
+--------------
+1) You should have activated the competency module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+2) The user you are going to use to setup the competency module should have 
+   access to all menuitems. Use the profile editor in the Employee menu to
+   accomplish this.
+   
+3) Supervisors are the leaders of a team
+   
+   
+3. Instructions
+---------------
+There are serveral menu items in the 'competency' menus. 
+
+Competence managment
+3.1 Competency domain
+
+  In this menu you can add the competency domains. All competences belong to a domain.
+  Enter the competency domain name. You can add an description as well but thats optioal.
+
+3.2 Competences
+  
+   In this menu you will create the competences you have or want in the company.
+   The competency will need a name, desctiption is optional. All competency belong to a domain so
+   you will have to choose the domain the competency belongs to.
+
+   After the competency is added youcan chose to add a competency level to the competency
+   a name and the level are needed for this. You can add as much levels as you want/need.
+
+3.3 Competency profile
+
+  Here you can make a profile first you need to give a name. after that you can add the
+  competences /levels that belong to this profile
+  
+Competence overviews
+
+3.4 competences for persons
+	
+  This view has serveral uses depending on what rights you have. If you have only right to see yoursef
+  you will see what competences you have wich one you should have and wich ones you have more then you should
+  On top of that when yuo hover above a competence you will see when you acquired it or when you planned it.
+  
+  People whith adding rights can chose from a list of peopel to see what competences they have and
+  add new competences to them /or delete them. They can also add a date to when the competency should
+  be acquired. They can also change the profile the employee has.  
+
+3.5 competenced for profile
+  
+  This is the view you wll see when you want to add competences to the profile. You can chose
+  From all profiles and then add a competency and/or level to this profile.
+
+3.5 Show team competences
+
+  This is a view for the team leader (supivisor) it will show from all people that are supervised
+  What level and what competences they have.
+
+Competence reports
+
+3.6 show competence growth
+  
+  This report will generate grapths between 2 dates to show how much new competences /levels the
+  chosen person has. It will show this for every competences the person has or should have 
+  according to the profile assignd to the person.
+
+3.7 show competence growth team
+  
+  This is the same as point 3.6 only this is a avarage for the chosen team ( if no team chosen it 
+  will generate the graphs for the whole company)
+
+3.8 Show competency voids(domain)
+
+  This will show a general view of all domains and shows how much or little competences are acquired
+  in that domain. The comparison is made against what should been acquired. 
+
+3.9 Show competency voids
+  
+  This is teh same as point 3.8 exept that we dont look at domains here  but we look inside a
+  domain to see in what competences the problems lay.
+
+3.10 Company overview
+ 
+  In this view we can see all competences that excist in the company. Its possible to filter
+  The view on domain,competency,level and/or person. So wen we need a specific competence we
+  can search quickly in this list to see who have the competency.
+  

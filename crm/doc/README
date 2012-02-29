@@ -1,0 +1,47 @@
+'CRM' Achievo module usage instructions
+==============================================
+
+1. What is it?
+--------------
+The 'CRM' module is a module that can be used for all kinds of CRM 
+functions. At this moment it will only work with the Achievo stable, the next
+(and final) version will only work with new upcoming Achievo based on ATK 5.x.
+
+2. Assumptions
+--------------
+1) You should have activated the CRM module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+   
+3. Instructions
+---------------
+After installation of the module, a new menuitem 'CRM' is added
+to main menu of Achievo. Since this is a first version of the CRM
+module and it has a long way to go, it has it own company and contacts. 
+So it can be tested without screwing up your real contacts. Once this module
+finished the contacts and company classes will be merged with the current ones.
+
+So what can you do with this first alpha version, well quite a lot.
+At this moment there are 6 major menu's:
+
+- Lead
+  Add all your leads here, in the future it will be possible to 
+  convert the leads to contacts/company.
+- Opportunity
+  Add your opportunities here.
+- Contact
+  Just like the contacts in Achievo, but with some extra fields.
+- Company
+  Just like the company in Achievo, but with some extra fields.
+- Campaign
+  Add your company campaigns here.
+- Activity
+  Add all you activities likes phone calls, emails etc. to contacts/company.
+
+All other menu's are for setting most of the dropdowns use in the above menu items.
+In the db directory there is an initial.sql with some default settings for the 
+dropdowns to see where they are ment for.
+
+The most screens are quite self explanatory, if you still have questions, patches, 
+idea's you can post them on the Achievo Forum (http://www.achievo.org/forum/)

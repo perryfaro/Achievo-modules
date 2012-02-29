@@ -1,0 +1,18 @@
+Achievo 'Billing' module Todo
+=============================
+
+This TODO file suggests enhancements and changes that can be made to
+this module:
+
+* Bughunting and bugfixing.
+* When deleting a bill line from a bill which has hours assigned to it,
+  these hours should be unassigned so they become available to assign to
+  another bill line.
+* Add bill.sxw, bill_advance.sxw and bill_credit.sxw template documents by
+  default to the templates folder.
+* Bughunting and bugfixing.
+* Update the developer.pdf and manual.pdf document files.
+* Fill the AUTHORS file
+* Re-enable pdf bill support.
+* Bughunting and bugfixing.
+* Change license?

@@ -1,0 +1,15 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in competency 1.0.1
+-------------------------
++ Added organization, contact modifier and do these nodes NF_READONLY. [Yury]
++ Added to CheckUpdated possibility to review deleted records, using Sales Force API 
+  queryAll() method. [Yury]
+
+Changes in competency 1.0.0
+-------------------------
++ Initial version

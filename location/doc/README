@@ -1,0 +1,34 @@
+'Location' Achievo module usage instructions
+============================================
+
+1. What is it?
+--------------
+The 'location' module is a module to keep locations managable.  By itself 
+it's somewhat useless, however it's intention is to make life easier for 
+various people.
+
+Since details like addresses are often used more than once this allows users 
+to update records more efficiently, for example if a company moves 
+you should only need to update the address once for all the staff that move too.
+
+If you're a module writer this can be linked in with your new modules to 
+make life easier.
+              
+
+2. Assumptions
+--------------
+1) You should have activated the location module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+2) Users who need to work with locations should have the proper access rights
+   to locations. Use the profile editor in the Employee menu to accomplish
+   this.  
+  
+   
+3. Instructions
+---------------
+Managing locations.
+
+  The location management screens should hopefully be quite self explanatory. 
+

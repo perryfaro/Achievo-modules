@@ -1,0 +1,46 @@
+Author
+------
+Lineke Willems         <lineke@achievo.org>
+
+
+Sponsors
+--------
+Development of version 1.0.0 of the weektimereg module was sponsored by Prosa
+(http://www.prosa.dk)
+
+
+Translators
+-----------
+Translations for this module are currently only available in a few
+languages. If you are willing to translate the module, please see the
+english.lng file in the languages/ directory and mail your translation to
+translations@achievo.org.
+                                                                                                                                         
+The following people contributed translations:
+                                                                                                                                         
+Dutch : Ivo Jansch     <ivo@achievo.org>
+German: Georg Scheidel <Georg.Scheidel@philotech.net>
+
+
+Major Contributors
+------------------
+We like to thank the following people for their significant contributions to
+this module.
+
+Peter Ussing <pus@prosa.dk> and Junaid Mukhtar <JUM@prosa.dk>
+
+  Peter and Junaid came with the idea for the module, and were largely responsible for
+  the definition of desired functionality.
+
+Ivo Jansch
+  
+  Ivo has tested and helped designing this module.
+
+  
+Other Contributors
+------------------
+We received bugfixes and other contributions from the following people:
+
+Stefan Leblanc <sleblanc@radicalhorizon.com>
+Ruhshad Master
+Roger Kristiansen <rogerk@linpro.no>

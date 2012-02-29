@@ -1,0 +1,21 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in iCal 1.0.1
+---------------------------
++ Added vCalendar support [Wouter]
++ Added xCalendar (xml ical format) support [Wouter]
++ Added output format select box [Wouter]
++ Fixed multiple event bug, event was shown multiple times [Wouter]
++ Code clean up [Wouter]
++ Now works in Achievo 1.2 [Wouter]
++ Added EssentialPIM to tested programs [Wouter]
++ Added kCal for PocketPC to tested programs [Wouter]
++ Added Danish translation of the language file [Morten Ørsted]
+
+Changes in iCal 1.0
+---------------------------
++ Initial version. [Wouter]

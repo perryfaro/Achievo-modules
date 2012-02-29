@@ -1,0 +1,1 @@
+ALTER TABLE `competency_planning` ADD `remark` TEXT NULL ;

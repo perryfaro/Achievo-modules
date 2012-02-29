@@ -1,0 +1,36 @@
+sflink menu explanation:
+
+Accountexport - export organizations from Achievo to Sales Force. Must be do before contact export.
+
+Contactexport - export contacts from Achievo to Sales Force.
+
+When we do account/contact export, salesforce_id field in organization/person table set to Sales Force ID.
+
+Clearaccount/Clearcontact  - for convinience set salesforce_id field (organization/person table) to null, 
+so we have to do export operation again.
+
+Sf_dupe - export/import operations log. All handled records id and name logs to this table, so we can found,
+what data has been export/import with and without errors, the errors reason, and is the record already exists 
+in Sales Force. Also GetUpdated gets the date of last update from this table.
+
+Accountimport/Contactimport - import all accounts/contacts (with empty Achievo_Id) from Sales Force to Achievo.
+Again Accounts must be import firstly, because contact contains link to account, so it must be already present 
+in Achievo before contact importing.
+
+Fix - my service menu, for do some fixing in Sales Force/Achievo db. Will be removed.
+
+Cron will run sflink->_doGetUpdated() method.
+
+EmployeeLink - link SalesForce and Achievo employee using email as link field.
+
+How to use. (from top point of menu to button)
+1. Have the same user in SalesForce and in Achievo.
+2. Do Employeelink.
+3. Do Account export (several times, while all account will be export to SF)
+4. Do Contact export (several times, while all contact will be export to SF)
+5. Do Account import (several times, while all account will be import back to Achievo)
+6. Do Contact import (several times, while all contact will import back to Achievo)
+
+The reason of 'several times' - memory overflow error, I think in node->addDb() code. Calling node->addDb() 2000 
+time do memory overflow error (128 Mb in my case)
+

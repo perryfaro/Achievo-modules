@@ -1,0 +1,23 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+
+Changes in Moduleinfo 1.0.3
+---------------------------
++ Removed depricated layout class. [Sandy]
++ Added recordlist icons. [Guido]
+
+Changes in Moduleinfo 1.0.2
+---------------------------
++ Added Danish translation. [Morten]
+
+Changes in Moduleinfo 1.0.1
+---------------------------
++ Added German translation. [Georg, Christian]
+
+Changes in Moduleinfo 1.0.0
+---------------------------
++ Initial version. [Ivo]

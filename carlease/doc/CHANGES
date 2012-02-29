@@ -1,0 +1,17 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in Carlease 1.0.0
+-------------------------
++ Initial version
++ Added current owner display to the leasecar admin page. [Guido]
++ Added translations for fuel types. [Guido]
++ Made lease sum visible in leasecar admin page. [Guido]
++ Added lpg to fuel's [Guido]
++ Added posibility to add multiple insurances per car, each having it's
+  ownrisk and description. [Guido]
+* Made status field obligatory and removed "empty" option. [Guido]
+* Fixed translation of damage. [Guido]

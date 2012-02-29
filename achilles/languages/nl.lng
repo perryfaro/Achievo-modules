@@ -1,0 +1,23 @@
+<?php
+  $nl = array(
+    "menu_achillesmanagement" => "Ticket tracking",
+    "menu_achilles_bug_add" => "Ticket toevoegen",
+    "menu_achilles_component" => "Componenten",
+    "menu_achilles_version" => "Versies",
+    "menu_achilles_milestone" => "Mijlpalen",
+    "bug_bug_id" => "Ticket nummer",
+    "bug_keywords" => "Trefwoorden",
+    "bug_severity_id" => "Aard",
+    "bug_status_id" => "Status",
+    "bug_resolution_id" => "Oplossing",
+    "bug_version_id" => "Versie",
+    "bug_component_id" => "Component",
+    "bug_milestone_id" => "Doel mijlpaal",
+    "bug_os_id" => "Besturingssysteem",
+    "bug_dependency_search" => "Afhankelijk van",
+    "bug_blocks_search" => "Blokkeert",
+    "bug_cc_search" => "Wijzigingsberichten",
+    "bug_project_id" => "Project",
+  );
+
+?>

@@ -1,0 +1,208 @@
+<?php
+
+
+  function getIncomingfolder()
+  {
+    $defaultincomingfolder = moduleDir("sap")."incoming/";
+    return atkConfig("sap_incomingfolder", $defaultincomingfolder);
+  }
+
+  function readImportFile($filename, &$organizations)
+  {
+    // Report the export filename
+    echo("Importing from $filename\n");
+
+    // Open the export file and return false if failed
+    if (!$filehandle = fopen($filename, "r")) {
+      echo("Cannot open $filename for read access.\nMaybe this file does not exist or appropriate rights are missing?\n");
+      return false;
+    }
+
+    // Get a new importhandler instance
+    atkimport("atk.handlers.atkactionhandler");
+    $importhandler = &atkNew("atk.handlers.atkimporthandler");
+
+    // Read all records
+    $headerline = fgets($filehandle);
+    $header = $importhandler->fgetcsvfromline($headerline, 0, ';', '');
+    $headerlookup = array_flip($header);
+    for($line = fgets($filehandle),$counter=1; $line!==false; $line = fgets($filehandle),$counter++)
+    {
+      //if we have an empty line, pass it
+      if(trim($line)=="")
+        continue;
+
+      // Convert the line into an import record (associative array)
+      $data = $importhandler->fgetcsvfromline($line, 0, ';', '');
+      $importrecord = array();
+      for($i=0,$_i=count($data); $i<$_i; $i++)
+      {
+        $importrecord[$header[$i]] = $data[$i];
+      }
+
+      // Replace IDEM values:
+      if (strtolower($importrecord["VERZKODE"]) == "idem") $importrecord["VERZKODE"] = $importrecord["POSTKODE"];
+      if (strtolower($importrecord["POSTADRES"]) == "idem") $importrecord["POSTADRES"] = $importrecord["ADRES"];
+      if (strtolower($importrecord["POST_PLAATS"]) == "idem") $importrecord["POST_PLAATS"] = $importrecord["PLAATS"];
+
+      // Build an achievo record
+      $organizations[$importrecord["NUMMER"]] = array(
+        "organizationcode" => $importrecord["NUMMER"],
+        "name" => $importrecord["NAAM"],
+        "address" => $importrecord["ADRES"],
+        "zipcode" => $importrecord["POSTKODE"],
+        "city" => $importrecord["PLAATS"],
+        "country" => $importrecord["LANDKODE"],
+        "mail_address" => $importrecord["POSTADRES"],
+        "mail_zipcode" => $importrecord["VERZKODE"],
+        "mail_city" => $importrecord["POST_PLAATS"],
+        "mail_country" => $importrecord["LANDKODE"],
+        "phone" => $importrecord["TELEFOON"],
+        "fax" => $importrecord["TELEFAX"],
+      );
+    }
+    fclose($filehandle);
+  }
+
+  function addSlash($path)
+  {
+    return $path . (substr($path, -1) == "/" ? "" : "/");
+  }
+
+  function cmp_filemtime($a, $b)
+  {
+    return filemtime($b) - filemtime($a);
+  }
+
+  function cmp_filename($a, $b)
+  {
+    return strcmp($b, $a);
+  }
+
+  function getDirContents($path)
+  {
+    $result = array();
+    $dir = opendir($path);
+    while (($file = readdir($dir)) !== false)
+    {
+      if (!in_array($file, array(".", "..", "old")))
+        $result[] = $path.$file;
+    }
+    closedir($dir);
+    usort($result, "cmp_filename"); // can be cmp_filemtime of cmp_filename
+    return $result;
+  }
+
+  function getImportOrganizations()
+  {
+    $incomingfolder = addSlash(getIncomingfolder());
+    $processedfolder = $incomingfolder . "old/";
+    $dirtraverser = &atkNew("atk.utils.atkdirectorytraverser");
+    $files = getDirContents($incomingfolder);
+
+    $result = array();
+    if (count($files) > 0)
+      readImportFile($files[0], $result);
+    else
+      echo "No import files found in incoming folder.\n";
+    foreach($files as $file)
+    {
+      rename($file, $processedfolder.basename($file));
+    }
+    return $result;
+  }
+
+  function getDbOrganizations()
+  {
+    $organizationnode = &atkGetNode("organization.organization");
+    $organizations = $organizationnode->selectDb("", "", "", "", array("organizationcode"));
+    $result = array();
+    for($i=0,$_i=count($organizations); $i<$_i; $i++)
+    {
+      $result[$organizations[$i]["organizationcode"]] = $organizations[$i];
+    }
+    return $result;
+  }
+
+  function importOrganizationsInternal()
+  {
+    // Get the organizations from db and import and make an array of all keys
+    $organizationsimport = getImportOrganizations();
+
+    if (count($organizationsimport) == 0)
+    {
+      echo "No organizations found.\n";
+      return false;
+    }
+    $organizationsimportkeys = array_keys($organizationsimport);
+    $organizationsdb = getDbOrganizations();
+    $organizationsdbkeys = array_keys($organizationsdb);
+
+    // Get a organizationnode reference
+    $organizationnode = &atkGetNode("organization.organization");
+
+    // Delete old records from db
+    $deleteorganizations = array_diff($organizationsdbkeys, $organizationsimportkeys);
+    if (count($deleteorganizations) > 0)
+      echo(sprintf("Deleting %d organizations: '%s'\n", count($deleteorganizations), implode("', '", $deleteorganizations)));
+    else
+      echo("No organizations will be deleted.\n");
+    foreach($deleteorganizations as $deleteorganization)
+    {
+      if (!empty($deleteorganization))
+        $organizationnode->deleteDb(sprintf("organization.organizationcode='%s'", $deleteorganization));
+    }
+
+    // Add new records from import
+    $addorganizations = array_diff($organizationsimportkeys, $organizationsdbkeys);
+    if (count($addorganizations) > 0)
+      echo(sprintf("Adding %d organizations: '%s'\n", count($addorganizations), implode("', '", $addorganizations)));
+    else
+      echo("No organizations will be added.\n");
+    foreach($addorganizations as $addorganization)
+    {
+      if (!empty($addorganization))
+        $organizationnode->addDb($organizationsimport[$addorganization]);
+    }
+
+    // Return succesfully
+    return true;
+  }
+
+  /**
+   * Reports the start and finish of the job and runs the internal importOrganizations function
+   *
+   * @return int Exitcode (0 if succesfull, 1 if not)
+   */
+  function main()
+  {
+    // Report the start
+    echo("Starting cronjob: importorganizations.cron\n\n");
+
+    // Run the internal exporthours function
+    $result = importOrganizationsInternal();
+
+    // Report the overall result (successfull or not)
+    if ($result)
+    {
+      echo("Organizations were succesfully imported.\n");
+    }
+    else
+    {
+      echo("An error occurred while importing organizations. Import was not succesfull!\n");
+    }
+
+    // Report the finish
+    echo("\nFinished cronjob: importorganizations.cron\n");
+
+    // Return exit code
+    return $result ? 0 : 1;
+  }
+
+  // Run the main function
+  $exitcode = main();
+
+  // Exit
+  exit($exitcode);
+
+?>

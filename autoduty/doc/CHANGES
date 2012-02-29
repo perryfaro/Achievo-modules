@@ -1,0 +1,27 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in Autoduty 1.0.3
+------------------------
+* Several codechanges for making autoduty work on new atk 5. [Dennis]
+* Fixed bug: cron script would crash if there was an employee without
+  contract. [Ivo]
+* Fixed bug: cron script would crash with Mysql5 in strict mode. [Sandy]
+
+Changes in Autoduty 1.0.2
+-------------------------
++ Added German translation. [Georg]
++ Added Danish translation. [Morten]
+* Autoduty can now handle employeecontracts that have no enddate. [Ivo]
+
+Changes in Autoduty 1.0.1
+-------------------------
++ Support for moduleinfo module (info and uninstall option). [Ivo]
+* Generated language files for all Achievo languages. [Ivo]
+
+Changes in Autoduty 1.0.0
+-------------------------
++ Initial version

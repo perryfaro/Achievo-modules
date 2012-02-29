@@ -1,0 +1,110 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+
+Changes in Billing 1.0.0
+------------------------
++ Hide vat, amount_with_vat, display calculatable amount when register km
+ expense. [Yury]
++ Don't do select km expense when register investment. [Yury]
++ Update amount field when update km expanse. [Yury]
++ Clear vat when saving km expense (if vat was fill before, vat value
+ save to db). [Yury]
++ Clear km field for regular expanse (when we start register km expanse, than 
+  change expense type to regular.[Yury]
++ Add new expense category data dictionary. [Yury]
++ Add type (investment or regular) of expense. [Yury]
++ Add category and subcategory of expense. [Yury]
++ Add VAT to expense and calculation of amount with VAT. [Yury]
++ Add separate classes for investments an regular costs. [Yury]
++ Initial version.
++ Added list of bills belonging to a project to the project's finance tab.
+  [Guido]
++ Added calculationtype attribute (can be normal or modification) in order
+  to allow rates to multiply the rate of a normal rate with a factor.
+  [Guido]
++ Added translations for "calculationtype" "normal", "modification",
+  "factor", "functionlevel_id", "km". [Guido]
++ Added translations for the billing_marked, billing_rate and billing_total
+  columns which are added to the hours node. [Guido]
++ Added possibility to add an 'kilometer registration' expensetype, where
+  the user enters kilometers for his registration instead of a fixed
+  value. [Harrie]
++ Added possibility to block expenses when the same week is blocked in
+  the weektimereg module. [Harrie]
++ Added billing_marked and billing_rate attributes to the hours node so
+  they can also be used in documents. [Guido]
++ Added ability to customize the billing workflow. [Guido]
++ Added the marked, rate and total columns to the hoursurvey. [Guido]
++ Added 'bill total' column that displays the bill total based on the bill
+  lines. [Harrie]
++ Added attribute 'send date' to bills. [Harrie]
++ Added cronjob that reminds the project coordinator 1 day ahead: 'Send these
+  invoices tomorrow' [Harrie]
++ Added possibility to change the billnumber-layout using the configfile. [Harrie]
++ Added payment reminders functionality to bills. [Harrie]
+
+- Removed add bill link in projects. [Guido]
+* Fixed problem where rate calculation for time registrations would
+  require the project to have exactly one contactperson. [Guido]
+* Fixed memory_limit exceeded error in billing.recalculatehours cronjob
+  by turning off the memorization of the debug log. [Guido]
+* Updated translations related to the expense report and declarability
+  report. [Guido]
+* Some code cleaning, now use atkcurrencyattribute where possible. [Yury]
+* Fixed deprecated atkLayout usage in the expense report. [Guido]
+* Replaced deprecated text() calls by atktext(). [Guido]
+* Updated documentation (still needs some attention). [Guido]
+* Fixed several PHP notices. [Guido]
+* Added translations for discounts. [Guido]
+* Fixed SQL errors in queries including the queries table. [Guido]
+* Now the edit/add screen is reserved instead of "Array()" when one or
+  more obligatory fields of a bill_line weren't entered. [Guido]
+* The atkManyToOne relation from bill_line to bill is now hidden. [Guido]
+* Bill lines can now be edited (although this is limited to the short
+  description, normal description and fixed price fields). [Guido]
+* Rewrote part of the discount calculation functionality which allows you
+  to add a discount billline based on another billline which adds or
+  subracts an absolute (amount) or relative (percentage) from the original.
+  [Guido]
+* The bill_nr should be determined when finalizing a bill, not when
+  creating it. [Guido]
+* Fixed mail reports caused by a missing die() statement after serving
+  a bill document. [Guido]
+* Fixed a problem where a bill document would be saved using an empty
+  filename (just ".sxw" as filename) when finalizing the bill. [Guido]
+* Fixed a problem where bills would be sent to the browser using the name
+  ".sxw" if no billnumber is available. Now the name of the template is
+  used. [Guido]
+* Assign hours linked to a project to the bill document when generating.
+  [Guido]
+* Fixed lawyernumber not being added to the billnumber. [Guido]
+* Fixed rounding errors in the bill_total_euro and bill_total_cent fields
+  in documents. [Guido]
+* maintain the shortdescription of a billline when adding the discount description to it. [Guido]
+* Fixed SQL error in Expense administration. [Guido]
+* Changed floatval(number_format($value, 2)) into round($value, 2). [Guido]
+* Cleaned up code. [Guido]
+* Fixed some php coding errors, some causing notices, others causing
+  functionallity not to work. [Guido]
+* Fixed descriptor (it always gave "Array" as descriptor).
+* Fixed html error. [Guido]
+* Fixed erronious calculation causing the the advancebilltimereglistener
+  to stop adding hours to a bill line when there is still enough financial
+  space to do so. [Guido]
+* When assigning document vars, selectDb should be called in "view" mode.
+  [Guido]
+* The coveragereport now uses the contracthours multiplied by the
+  target declarability percentage as 100%. [Guido]
+* Added totalizing support for the Total (Hours * Rate) column in the
+  hour survey. [Guido]
+* Fixed problem with calculation of total for records with empty
+  rate (null) field. This caused parse errors in some situations.
+  [Guido]
+* Added AF_HIDE_SEARCH flag to the billing_total attribute, to prevent
+  it from being searched on. [Dennis, Guido]
+* Fixed fatal error in billing.recalculatehours cronjob. [Guido]
+* Fixed installer for Achievo 1.4.x

@@ -1,0 +1,89 @@
+<?php
+
+  /**
+   * Performs the hours recalculation
+   *
+   * @return Boolean Succesfull or not
+   */
+  function recalculateHoursInternal()
+  {
+ini_set("memory_limit", "128M");
+ini_set("display_errors", true);
+$GLOBALS['config_debug'] = -1;
+    // !! GUIDO HACK !! Clone the default db config
+    global $config_db;
+    $config_db["default_clone"] = $config_db["default"];
+    $db = &atkGetDb();
+    $db_clone = &atkGetDb("default_clone");
+
+    // Get a ratenode reference
+	$ratenode = &getNode("billing.billing_rate");
+
+	// Get a db reference and setup the query
+    $sql = "SELECT hours.id, hours.billing_rate FROM hours";
+    $db_clone->query($sql);
+	
+	// Loop through all records
+	$recordcounter = 0;
+	$updatecounter = 0;
+    while ($db_clone->next_record())
+    {
+	  $recordcounter++;
+	  $hours_id = $db_clone->m_record["id"];
+	  $oldrate = $db_clone->m_record["billing_rate"];
+	  $newrate = floatval($ratenode->getRateByTimeEntry($hours_id));
+
+	  if ($oldrate != $newrate)
+	  {
+		$updatesql = "UPDATE hours SET billing_rate=".$newrate." WHERE id='$hours_id'";
+		$db->query($updatesql);
+		$updatecounter++;
+	  }
+	}
+
+	// Commit the whole update
+	$db->commit();
+
+    // Report the number of project/day combinations which are about to be exported
+    echo(sprintf("%d Time registrations were recalculated, %d rates were updated.\n", $recordcounter, $updatecounter));
+
+    // Return succesfully
+    return true;
+  }
+
+  /**
+   * Reports the start and finish of the job and runs the internal recalculatehours function
+   *
+   * @return int Exitcode (0 if succesfull, 1 if not)
+   */
+  function main()
+  {
+    // Report the start
+    echo("\nStarting cronjob: recalculatehours.cron\n\n");
+
+    // Run the internal exporthours function
+    $result = recalculateHoursInternal();
+
+    // Report the overall result (successfull or not)
+    if ($result)
+    {
+      echo("Hours were succesfully recalculated.\n");
+    }
+    else
+    {
+      echo("An error occurred while recalculating hours!\n");
+    }
+
+    // Report the finish
+    echo("\nFinished cronjob: recalculatehours.cron\n\n");
+
+    // Return exit code
+    return $result ? 0 : 1;
+  }
+
+  // Run the main function
+  $exitcode = main();
+
+  // Exit
+  exit($exitcode);
+?>

@@ -1,0 +1,35 @@
+<?php
+  // Achievo language file for English.
+  //
+  // Module: iCal
+  //
+  // Translated by:
+  //   Wouter van den Broek <wouter@ibuildings.nl>
+  //
+  // If you want to add a new language to achievo, please translate this
+  // file and send it to translations@achievo.org
+  //
+  // To update an existing translation, mail an updated version to
+  // translations@achievo.org or request an account for the Achievo
+  // Translation Tool.
+  //
+  $txt_tab_ical = "iCal preferences";
+  $txt_ical_preferences = "iCal preferences";
+  $txt_ical_explain_url = "You can access your iCal file with other program's by making a uniqe URL below with your own preferences";
+  $txt_ical_explain_1 = "The URL you see below you can use to access your iCal file with other program's or your browser <br>";
+  $txt_ical_user_url = "URL to iCal file";
+  
+  $txt_ical_events = "Show my calendar";
+  $txt_ical_events_privat = "Show privat events in calendar";
+  $txt_ical_only_events_privat = "<b>Only> show my own events in calendar";
+  $txt_ical_todo = "Show my todo list";
+  
+  $txt_ical_comment_alarm = "Alarm preferences";
+  $txt_ical_alarm = "Alarm for an event";
+  $txt_ical_alarm_time = "The number of minutes before the alarm goes off";
+  $txt_ical_alarm_repeat = "The number of times the alarm is repeated";
+  
+  $txt_ical_format_comment = "You can choose the output format in which the will be exported";
+  $txt_ical_format = "Calendat Format";
+
+?>

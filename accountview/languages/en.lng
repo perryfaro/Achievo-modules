@@ -1,0 +1,7 @@
+<?php
+  $en = array(
+  "changeabbreviation" => "Change Accountview number",
+  "project_abbreviation" => "Accountview number",
+  );
+
+?>

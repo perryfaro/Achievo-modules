@@ -1,0 +1,30 @@
+'ProductPortfolio' Achievo module usage instructions
+====================================================
+
+1. What is it?
+--------------
+With the 'ProductPortfolio' module it is possible to maintain a treestructure
+of products your company sells.
+
+
+2. Assumptions
+--------------
+1) You should have activated the ProductPortfolio module in Achievo. See the
+   doc/INSTALL file for instructions on how to install and activate the
+   module.
+
+2) Users who need to work with the product portfolio should have the
+   proper access rights to the product portfolio. Use the profile
+   editor in the Employee menu to accomplish this. See also the INSTALL file.
+
+
+3. Instructions
+---------------
+
+to be written
+
+
+4. Known Issues
+---------------
+
+none

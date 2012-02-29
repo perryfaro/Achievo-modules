@@ -1,0 +1,11 @@
+<?php
+	$nl = array(
+  "menu_software" => "Software",
+  "menu_installations" => "Software Installaties",
+  "installation_software_id" => "Gebruikte software",
+  "installation_maintainer_id" => "Maintainer",
+  "installation_project_id" => "Project",
+  "project_tab_software" => "Software"
+  );
+
+?>

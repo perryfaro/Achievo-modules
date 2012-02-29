@@ -1,0 +1,27 @@
+<?php
+
+  $en = array(  
+     "bill_no" => "Billingnumber",
+     "booked" => "Booked",
+     "brutoprice" => "Bruto price",
+     "estimatedprice" => "Estimated price", 
+     "from"=>"from",
+     "menu_orders" => "Orders",
+     "menu_purchasing" => "Purchasing",     
+     "nettoprice" => "Netto price",
+     "no_results" => "No matches were found for the given parameters.",
+     "order" => "Order",     
+     "order_line" => "Order line",
+     "order_report"=>"Order report",     
+     "orderlines" => "Orderlines",
+     "project_id" => "Project",
+     "phase_id" => "Phase",
+     "purchase" => "Purchase",
+     "purchase_order" => "Order",          
+     "received" => "Received",     
+     "supplier_id" => "Supplier",
+     "to"=>"to",
+     "user_id" => "Entered by",
+  );  
+  
+?>

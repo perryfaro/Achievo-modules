@@ -1,0 +1,55 @@
+Installing the 'StatusReport' Achievo module
+========================================
+
+Read this first
+---------------
+Depite our efforts to keep this INSTALL file as accurate as possible, there
+might be situations in which the described procedure does not work.
+In this case send an email to ivo@achievo.org or to the mailinglist
+(achievo@achievo.org) and we will try to help you out.
+
+Requirements
+------------
+
+A working Achievo installation, version 1.0.RC2 or higher.
+The module has been tested with 1.0.RC2 and 1.0.RC3.
+
+Installation Procedure
+----------------------
+
+1) Place the files from the module in your Achievo external modules directory. 
+   Preferably, this is a directory just outside the Achievo root. For example, 
+   if your Achievo installation is located in /var/www/html/achievo, put
+   this module in /var/www/html/achievo_modules/statusreport.
+   
+2) Open up Achievo's config.inc.php file and locate the modules setting near
+   the bottom of the file. Add the following line to add the StatusReprot module
+   to Achievo:
+   
+   module("statusreport", "../achievo_modules/statusreport/");
+   
+   The first parameter is the name of the module, and should always be 
+   'statusreport'. The second parameter points to the directory where the module
+   is located, relative to the directory of Achievo itself.
+   
+3) Copy statusreport module configuration file named statusreport.inc.php from 
+   module directory skel/configs to configs directory of your Achievo installation.
+   See comments in above mentioned configuration file about possible configurations. 
+   
+4) Log out of Achievo, and point your browser to the setup.php script in the
+   Achievo directory, for example:
+   
+   http://yourserver/achievo/setup.php
+   
+   (As an alternative to step 3 and 4, you can use the Moduleinfo module to 
+   install the database.)
+   
+5) Log in as the 'administrator' user, and follow the directions. If steps 1, 2 
+   and 3 went ok, the setup script will indicate that it will have to install
+   the statusreport module in the database. 
+   
+   If the installation went well, you should have a new tab named 'Status report' on the
+   project edit screen. (You must grant access to users to the new features,
+   using the profile editor in the Employee menu, see more in README file.)
+
+6) See the README file for usage instructions.

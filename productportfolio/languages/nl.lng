@@ -1,0 +1,36 @@
+<?php
+
+  $nl = array(
+    "productportfolio"=>"Product portfolio",
+    "name"=>"Naam",
+    "description"=>"Omschrijving",
+    "producttype"=>"Producttype",
+    "product"=>"Product",
+    "productgroup"=>"Productgroep",
+    "marketarea"=>"Marktgebied",
+    "country"=>"Land",
+    "continental"=>"Europa",
+    "global"=>"Mondiaal",
+    "product"=>"Product",
+    "products"=>"Producten",
+    "title_product_tree"=>"Producten boomstructuur",
+    "usps"=>"USP's",
+    "conditions"=>"Voorwaarden",
+    "costsandparameters"=>"Kosten en parameters",
+    "subproducts"=>"Onderliggende producten",
+    "uppselproducts"=>"Upp-sel producten",
+    "representation"=>"Representatie",
+    "representations"=>"Representaties",
+    "product_id"=>"Product",
+    "file_url"=>"File URL",
+    "product_url"=>"Product URL",
+    "targetgroup"=>"Doelgroep",
+    "targetgroups"=>"Doelgroepen",
+    "comment"=>"toelichting",
+    "superproduct_id"=>"Overkoepelend product",
+    "tags"=>"Tags",
+    "uppselproduct"=>"Upp-sel product",
+    "enter_a_comma_seperated_list_of_tags_here"=>"Vul hier een comma gescheiden lijst van tags in",
+  );
+
+?>

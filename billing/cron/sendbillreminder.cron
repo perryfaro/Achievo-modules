@@ -1,0 +1,85 @@
+<?php
+
+  /**
+   * Script sends an e-mail to the projectmanager of the project when
+   * the senddate of a invoice is tomorrow.
+   * 
+   * Run this script daily - if not it won't work as expected.
+   */
+
+  $searchdate = date("Y-m-d",strtotime("tomorrow"));
+  
+  $db = &atkGetDb();
+  $results = $db->getrows(" SELECT 
+                              person.email AS email,
+                              person.firstname AS firstname,
+                              person.lastname AS lastname,
+                              project.name AS projectname,
+                              project.abbreviation AS projectabbreviation,
+                              billing_bill.bill_nr AS billnr,
+                              billing_bill.description AS bill_description
+                            FROM 
+                              billing_bill
+                            LEFT JOIN
+                              project ON project.id = billing_bill.project_id
+                            LEFT JOIN
+                              person ON person.id = project.coordinator
+                            WHERE 
+                              send_date = '$searchdate'");
+    
+  if (sizeof($results) > 0)
+  {
+    $mailreceivers = array();
+
+    foreach($results as $row)
+    {
+      if ($row['email'] != "")
+      {
+        if (!array_key_exists($row['email'],$mailreceivers))
+          $mailreceivers[$row['email']] = array();
+          
+        $mailreceivers[$row['email']][] = $row;
+      }
+    }
+    
+    if (sizeof($mailreceivers) > 0)
+    {
+      foreach($mailreceivers as $emailadr => $maildata)
+        sendbillreminder_sendmail($emailadr,$maildata);
+    }
+  }
+  
+  
+  function sendbillreminder_sendmail($emailadr,$maildata)
+  {
+    $mailinglanguage = atkconfig('language','en');
+    
+    $receiver_emailadr = trim("{$maildata[0]['firstname']} {$maildata[0]['lastname']} <$emailadr>");
+    
+    $projects_str = "";
+    
+    foreach($maildata as $mailproject)
+    {
+      $projects_str .= "---\n";
+      $projects_str .= atktext('bill_id','billing','',$mailinglanguage) . ": " . $mailproject['billnr'] . "\n";
+      
+      if ($mailproject['bill_description'] != "")
+        $projects_str .= atktext('description','billing','',$mailinglanguage) . ": " . $mailproject['bill_description'] . "\n";
+        
+      $projects_str .= atktext('project_id','billing','',$mailinglanguage) . ": " . $mailproject['projectname'] . " (".$mailproject['projectabbreviation'].")\n";
+    }
+    
+    $mailbody = atktext('sendbillreminder_mailbody','billing','',$mailinglanguage);
+    $mailsubject = atktext('sendbillreminder_mailsubject','billing','',$mailinglanguage);
+    
+    $mailbody = str_replace("[projects]",$projects_str,$mailbody);
+    
+    $frommail = atkConfig::get('billing','frommail');
+    
+    if (!$frommail)
+      $frommail = "Achievo <noreply@achievo.org>";
+      
+    mail($receiver_emailadr,$mailsubject,$mailbody,"From: $frommail");
+  }
+  
+?>

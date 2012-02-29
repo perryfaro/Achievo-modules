@@ -1,0 +1,63 @@
+<?php
+  /**
+   * English language definition file
+   *
+   * @package achievo_modules
+   * @subpackage weekplanning
+   *
+   * @author guido <guido@ibuildings.nl>
+   * @author ivo <ivo@ibuildings.nl>
+   *
+   * @copyright (c) 2005 Ibuildings.nl BV
+   * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2
+   *
+   * @version $Revision: 3682 $
+   * $Id: en.lng 3682 2006-07-11 10:30:36Z ivo $
+   */
+
+  // Load the array of language definitions
+  $en = array(
+   "add_week"=>"Add week",
+   "employee_week"=>"EM/WK",
+   "holiday"=>"Holiday",
+   "invaliddateperiod"=>"Invalid date period.",
+   "menu_weekplanning"=>"Weekplanning",
+   "menu_weekplanning_peremployee"=>"Weekplanning per employee",
+   "menu_weekplanning_perproject"=>"Weekplanning per project",
+   "menu_weekplanningconflicts"=>"Conflicts",
+   "noemployeesmatchingcriteria"=>"There are no employees matching the given criteria.",
+   "noprojectsmatchingcriteria"=>"There are no projects matching the given criteria.",
+   "left"=>"Left",
+   "per_employee"=>"Per employee",
+   "per_project"=>"Per project",
+   "period_from"=>"Period from",
+   "remove_week"=>"Remove week",
+   "to"=>"To",
+   "weekplanning"=>"Weekplanning",
+   "weekplanning_peremployee"=>"Weekplanning per employee",
+   "weekplanning_perproject"=>"Weekplanning per project",
+   "new"=>"New",
+   "persistent"=>"Persistent",
+   "resolved"=>"Resolved",
+   "ignored"=>"Ignored",
+   "overruled"=>"Overruled",
+   "project_fixed_price"=>"Total budget",
+   "project_weekplanning_employee_budget"=>"Employee budget",
+   "total_planned"=>"Total planned",
+   "yet_to_plan"=>"Yet to plan",
+   "planned_too_much"=>"Planned too much",
+   "weekplanning_avaragerate"=>"Avarage rate",
+   "weekplanningconflictlog"=>"Weekplanning conflicts",
+   "conflict"=>"conflict",
+   "timestamp"=>"Timestamp",
+   "type"=>"Type",
+   "actorid"=>"Created by",
+   "weekplan_exceeds_currentplan" => "Weekplanning exceeds phase planning",
+   "planned_exceeds_team_capacity" => "Weekplanning exceeds capacity",
+   "booked_nears_planned" => "Booked time nears planning",
+   "booked_exceeds_planned" => "Booked time exceeds planning",
+   "employee_underplanned" => "Employee underplanned",
+   "planned_exceeds_employee_contract" => "Planning exceeds employee contract",
+   "planned_exceeds_employeebudget" => "Planning exceeds personnel budget",
+  );
+?>

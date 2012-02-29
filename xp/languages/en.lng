@@ -1,0 +1,39 @@
+<?php
+  // Achievo language file for Nederlands.
+  //
+  // Module: xp
+  //
+  // Translated by:
+  //   Guido van Biemen <guido@ibuildings.nl>
+  //   Ivo Jansch <ivo@achievo.org>
+  //
+  // If you want to add a new language to achievo, please translate this
+  // file and send it to translations@achievo.org
+  //
+  // To update an existing translation, mail an updated version to
+  // translations@achievo.org or request an account for the Achievo
+  // Translation Tool.
+  //
+  $en = array(
+    "menu_xp" => "XP",
+    "menu_stories" => "User stories",
+    "tab_user_stories" => "User stories",
+    "user_stories" => "User stories",
+    "user_story" => "User story",
+    "title" => "Title",
+    "submitted_by" => "Submitted by",
+    "story" => "Story",
+    "estimate" => "Estimated duration",
+    "submitted_on" => "Submitted on",
+    "accepted_on" => "Accepted on",
+    "planned_on" => "Planned on",
+    "implemented_on" => "Implemented on",
+    "released_on" => "Released on",
+    "comments" => "Comments",
+    "status" => "Status",
+    "not_processed" => "Not processed yet",
+    "clickheretogoback" => "Click here to go back",
+    "print" => "Print",
+    "implement" => "Mark as implemented",
+  );
+?>

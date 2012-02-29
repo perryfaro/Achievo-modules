@@ -1,0 +1,1 @@
+{atkfrontcontroller uri='competency/profile/show'}

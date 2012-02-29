@@ -1,0 +1,17 @@
+<?php
+
+$nl = array(
+"tab_statusreport" => "Status Report",
+"pim_projectmanagerview" =>"Your currently active projects",
+"pim_managementview" =>"Projects your have MT ownership of",
+"show_all_flagged_projects" =>"Show all flagged projects",
+"dont_have_report_right" => "You don't have the right to see this report",
+"clicktoviewall" => "Click to view all projects",
+"show_all_project" => "Show all projects",
+"clicktoviewflagged" => "Click to view all flegged projects",
+"less_5_persent" => "Amount of hours spend is 0-5% higher than the sum of initial estimates",
+"more_5_persent" => "Amount of hours spend is more than 5% over the sum of initial estimates",
+"bad_velocity" => "Bad velocity",
+"satisfaction" => "Customer satisfaction",
+"project_budget_dont_set" => "Project budget not set"
+);

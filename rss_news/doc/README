@@ -1,0 +1,68 @@
+'RSS News' Achievo module usage instructions
+==============================================
+
+1. What is it?
+--------------
+The 'RSS News' module is a module that can show all kinds of RSS News Feeds
+on your pim page. It has support for rss 0.9x, 1.0, 2.0 and atom files.
+
+
+2. Assumptions
+--------------
+1) You should have activated the RSS News module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+   
+3. Instructions
+---------------
+After installation of the module, it depends if you are an admin user or 
+not. If you are one, you have 2 new menu items in the Setup menu called
+'RSS News groups' and 'RSS News Feed url'.
+
+The RSS News groups, is just to create a better overview of the 
+predefined RSS News feeds you can create. In the RSS News Feed url, you
+have to enter a name, and url (complete with http://) to the RSS News Feed 
+on your favorite sites.
+
+The normal users now have an extra tab by the User Preferences called
+'RSS News'. Here they can add their own RSS News feeds, you add the 
+predefined RSS News Feeds. Also they can set some settings:
+
+Refresh time: 
+The time (in seconds) the module will cache the file before getting a new one.
+The minimal amount of seconds is 3600 (else website admin will start complaining),
+but 14400 (4 hours, default) is in most cases enough.
+
+Show feed title: 	
+With this option you can show the feed title.
+
+Show feed image if available: 	
+With this option you can show the feed image if it's available.
+
+Show descriptions: 	
+With this option you can turn the descriptions on / of.
+
+Show input boxe if available: 	
+Some RSS News feeds, contain a Input box, with this option
+you can show it if it's available.
+
+Max items: 	
+WIth this option, you can set the amount of news items you want 
+to see. if you enter 0, it will show all items.
+
+Limit item title to: 	
+If the item titles are to long, you can limit them with this option.
+If you enter 0, it will show the complete description.
+
+Limit description: 	
+If the descriptions are to long, you can limit them with this option.
+If you enter 0, it will show the complete description.
+
+Decode from UTF8:
+Some sites have UTF8 encoded RSS News feeds, then you need to put
+this option on.
+
+
+Questions may be posted on the Achievo mailinglist, to which you can 
+subscribe by sending an empty message to achievo-subscribe@achievo.org.

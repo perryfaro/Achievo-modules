@@ -1,0 +1,120 @@
+<?php
+
+	atkimport("dateutil");
+	//useattrib("atktext");
+	
+/**
+ * Create an array with contracts per expire_date
+ * when retrieving the contracts for a new expiration date, overwrite the older ones
+ * This way only one mail is send to a specific user for his/her expiration date.
+ * Also filter contracts that already are extended
+ *
+ * Full description of the function
+ *
+ * @param type name description
+ * @return type description
+ */
+	function createExpiringContractsArrays($expire_date)
+	{ 		
+		// Initialize the contracts array
+		$contracts = array();
+		
+			
+			// Find all contracts that expire on the given date
+			$contractstoexpire = getContractsByExpireDate($expire_date);
+				
+					
+			// Loop through all contracts that expire on the given expire date
+			foreach ($contractstoexpire as $contract) 
+			{
+				// Is the contract already listed in the array contracts
+				$contracts[$contract["id"]] = $contract;
+			}
+				
+		
+		return $contracts;
+	}
+	
+		/**
+	 * Gets all contracts that expire on or before the specified date(depending on mode).	 
+	 * The enddate of the contract should be after or on the date of today. 
+	 * Also the user account should not be deactivated (status != 'nonactive)'.	 
+	 *
+	 * Full description of the function
+	 *
+	 * @param date expirationdate
+	 * @return array contracts
+	 */
+	function getContractsByExpireDate($dt)
+	{		
+		//$mode = atkConfig::get("carlease", "carlease_contracts_expiration_mode",1);		
+		
+		$contractsnode = &getNode("carlease.carlease");
+		
+		$selector = "carlease.enddate = '$dt'";
+						
+		return $contractsnode->selectDb($selector);		
+	
+	}
+	
+	function sendEmails($contracts)
+	{		
+		$dest_addr = atkConfig::get("carlease", "carlease_contracts_expiration_sendmail",array());
+		$carleasenode = &getNode("carlease.carlease");
+		//send mail per contract    	
+		foreach ($contracts as $contract)
+		{
+			if($contract != array())
+			{
+				$enddate = date("d-m-Y",mktime(12,0,0,$contract['enddate']['month'], $contract['enddate']['day'], $contract['enddate']['year']));
+				
+				$subject = $carleasenode->text("mail_subject_leasecontract","carlease")." : ". $contract["licensenumber"]; 
+				$body = $carleasenode->text("mail_body_contract","carlease")." : ".$contract["licensenumber"]."\n";
+				$body.= $carleasenode->text("mail_body_expires","carlease")." : ".$enddate."\n";
+				usermail($dest_addr, $subject, $body);  		
+			}
+		}    	
+	}
+	
+	/**
+	 * Sort array with expirevalues
+	 *
+	 * Full description of the function
+	 *
+	 * @param type name description
+	 * @return type description
+	 */
+	function sortExpireValues(&$arr) 
+	{
+		usort($arr, "compareCallback");
+	}
+?>
+
+<?php	
+  echo "Starting cronjob: carleasecontracts.cron\n\n";
+  
+	$expirevalues = atkConfig::get("carlease", "carlease_contracts_expiration_values",array());
+	
+	if($expirevalues == array())
+		echo ("No expirevalues in config file or file does not exist.\nNothing to do.\nExiting.\n");
+		
+	sortExpireValues($expirevalues);  	
+		
+	$today = date("Y-m-d");
+	$now_year = substr($today,0,4);
+	$now_month = substr($today,5,2);
+	$now_day = substr($today,8,2);		
+	
+	//create expire dates
+	$expire_dates = array();
+	$expire_dates = date("Y-m-d",mktime(12,0,0,$now_month+$expirevalues['month'], $now_day+$expirevalues['day'], $now_year+$expirevalues['year']));
+		  	
+	$contracts = createExpiringContractsArrays($expire_dates);
+	 if ( count($contracts)==0)
+		echo ("No contracts will expire on the dates provided in the config file.\nNothing to do\nExiting.\n");
+	else 
+		echo ("An e-mail has been send.\n");
+	
+	sendEmails($contracts);
+	echo "Finished cronjob: carleasecontracts.cron\n\n";
+?>

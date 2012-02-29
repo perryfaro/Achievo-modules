@@ -1,0 +1,37 @@
+.phaseplan
+{    
+}
+
+.phaseplan TD
+{
+  font-size: 10px;  
+  margin: 0;  
+}
+
+.phaseplan TH
+{
+  font-weight: bold;
+  font-size: 10px;    
+  text-align: center;
+  background: #cccccc;
+}
+
+.errortext
+{
+  font-weight: bold;
+  font-size: 10px;    
+  color: #FF0000;  
+}
+
+.oktext
+{
+  font-weight: bold;
+  font-size: 10px;    
+  color: #00FF00;  
+}
+
+.normaltext
+{
+  font-weight: bold;
+  font-size: 10px;    
+}

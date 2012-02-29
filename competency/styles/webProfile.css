@@ -1,0 +1,152 @@
+#loading {
+  display: none;
+  position: absolute;
+  left: = 50%;
+  z-index: 10;
+}
+
+#loadingComp {
+  display: none;
+}
+
+#competences {
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+#persons {
+  height: auto;
+  width: auto;
+  min-width: 800px;
+  overflow: auto;
+  float: top;
+}
+
+/*Competence levels*/ /* NA = Not Acquired
+IP = In Profile
+L = Legenda
+*/
+.level {
+  background-color: #c2d8ed;
+  padding: 10px;
+  border: solid black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: solid black 1px;
+}
+
+.level_NA {
+  background-color: #EEEEEE;
+  color: #a6a6a6;
+  padding: 10px;
+  border: dashed black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: dashed black 1px;
+}
+
+.level_L {
+  background-color: #c2d8ed;
+  padding: 10px;
+  border: solid black 1px;
+  margin: 1px;
+  width: 130px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: solid black 1px;
+}
+
+.level_NA_L {
+  background-color: #EEEEEE;
+  padding: 10px;
+  border: dashed black 1px;
+  color: #a6a6a6;
+  margin: 1px;
+  width: 130px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: dashed black 1px;
+}
+
+.group { /*background-color: #EBFFE5;*/ /*border: dashed gray 1px;*/
+  margin: 1px;
+  padding: 1px;
+  size: auto;
+}
+
+.groupborderless { /*background-color: #EBFFE5;*/
+  border: none;
+  margin: 1px;
+  padding: 1px;
+  size: auto;
+  min-height: 20px;
+  overflow: auto;
+}
+
+.domain { /*background-color: #E5EBFF;*/ /*border: solid gray 1px;*/
+  border-bottom: solid gray 2px;
+  margin: 1px;
+  padding: 5px;
+  size: auto;
+}
+
+.domainborderless { /*	background-color: #E5EBFF;*/
+  border: none;
+  margin: 1px;
+  padding: 1px;
+  size: auto;
+}
+
+.compover {
+  position: absolute;
+  min-width: 200px;
+  min-height: 100px;
+  size: auto;
+  background-color: #FFFFCC;
+  border: solid gray 1px;
+}
+
+.myTable TABLE {
+  border: 1px solid;
+  empty-cells: show;
+  border-collapse: collapse;
+}
+
+.myTable TD {
+  border: 1px solid;
+  text-align: center;
+  empty-cells: show;
+  border-collapse: collapse;
+  background-color: #F0F0F0;
+}
+
+.legenda {
+  width: 500;
+  padding: 4px;
+  height: 400;
+  border: dashed gray 2px;
+  position: absolute;
+}
+
+.help {
+  float: right;
+  position: absolute;
+}
+
+.overTable {
+  width: 300px;
+  padding: 5;
+}
+
+.nameCol {
+  font-weight: bold;
+}

@@ -1,0 +1,49 @@
+<?php
+
+  error_reporting(E_ALL^E_NOTICE);
+
+  define('USERID',atkConfig::get('wiki', 'wiki_userid')); // get this from your preferences page
+  define('USERNAME', atkConfig::get('wiki', 'wiki_login'));
+  define('PASSWORD',atkConfig::get('wiki', 'wiki_password')); // plain text, no md5 or anything
+
+
+  require_once(moduleDir('wiki').'bot/class.achievobot.inc');
+  $myBot = new AchievoBot();
+
+  // Pass 1, build the addressbook
+  $myBot->updatePage( 'Address_Book', 'achievo_getAddressBook', 'Updated Addresses from Achievo.' );
+
+  function achievo_getAddressbook()
+  {
+    $addressbook = atknew("module.wiki.utils.addressbook");
+    return $addressbook->render();
+  }
+
+  // Pass 2, update the team pages
+  $teamutil = atknew("module.wiki.utils.team");
+  $teams = $teamutil->getTeams();
+  foreach($teams as $team)
+  {
+    // This takes the team page and adds the list of members to the end of it.
+    $myBot->updatePage( str_replace(" ","_", $team["name"]), 'achievo_getTeamList', 'Updated teaminfo from Achievo.' , array("team_id"=>$team["id"]));
+  }
+
+  function achievo_getTeamList($params)
+  {
+    global $teamutil; //bleh evil!
+    $result = $teamutil->renderMembers($params["team_id"]);
+    $result.= "\n".$teamutil->renderProjects($params["team_id"]);
+
+    return $result;
+  
+  }
+
+  // Pass 3, update birthday cal
+  $myBot->updatePage( 'Birthdays', 'achievo_getBirthdays', 'Updated birthdays from Achievo.');
+  function achievo_getBirthdays()
+  {
+    $birthdays = atknew("module.wiki.utils.birthdays");
+    return $birthdays->render();
+  }
+
+

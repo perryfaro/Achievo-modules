@@ -1,0 +1,69 @@
+<?php
+
+  include_once(moduleDir("holidayreport")."module.inc");
+
+  // calculate balance of the hours of lastyear.
+  $selectedyear = date("Y") - 1;
+
+  // get leave types
+  $types = getTypes();
+  for ($i=0;$i<count($types);$i++)
+  {
+  	// get the age rules
+  	$rules[$types[$i]["description"]] = getRules($types[$i]["id"], $selectedyear);
+  }
+
+  // get employeedata
+  $employees = getEmployees();
+  for ($i=0;$i<count($employees);$i++)
+  {
+  	// get the contracthours of the employee of the selected year
+  	$contracts = getContracts($employees[$i]["id"], $selectedyear);
+
+  	if (count($contracts)>0)
+  	{
+      $record = getEmployeeData($employees[$i]["id"], $employees[$i]["birthdate"], $selectedyear, $contracts, $types, $rules);
+      $balance = $record["balance"];
+  	}
+  	else
+  	{
+  	  $balance = "0.00";
+  	}
+
+  	// only if balance <> 0,00 add or update the record
+  	if ($balance != "0.00" && $balance != "0")
+  	{
+  	  // see if we already have a balance for this employee
+  	  $db = &atkGetDb();
+  	  $sql = "SELECT id FROM holidayreport_correction WHERE type='balance' AND year = '$selectedyear' AND userid = '".$employees[$i]["id"]."'";
+  	  $res = $db->getRows($sql);
+  	  if (count($res))
+  	  {
+  		  // update the record
+  		  $sql = "UPDATE holidayreport_correction SET year='$selectedyear', userid='".$employees[$i]["id"]."', correction='$balance' WHERE id='".$res[0]["id"]."'";
+  		  $db->query($sql);
+  	  }
+  	  else
+  	  {
+  		  // insert new record
+  		  $newid = $db->nextid("holidayreport_correction");
+  		  $sql = "INSERT INTO holidayreport_correction (id, year, userid, correction, type) VALUES ('$newid', '$selectedyear', '".$employees[$i]["id"]."', '$balance', 'balance')";
+  		  $db->query($sql);
+  	  }
+  	}
+  }
+
+  function getEmployees()
+  {
+  	$db = &atkGetDb();
+
+  	$sql = "SELECT id, lastname,firstname,userid, birthdate
+            FROM person
+            WHERE role = 'employee'
+            ORDER BY firstname,lastname";
+
+  	$records = $db->getrows($sql);
+  	return $records;
+  }
+
+?>

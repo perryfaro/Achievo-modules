@@ -1,0 +1,23 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+
+Changes in achilles  1.0.0
+---------------------------
++ Added documentation
++ Added pim plugin. [Dario]
++ Added description and deadline to milestone. [Dario]
++ Added project, milestone, completed fields to a bug. [Dario]
++ Bugs can be searched using global search 
++ Added Mail notifications
++ Added Printer friendly list (in admin screen)
+* History modifications (complete name of the user)
+* Bug dependency Fixed
+* If the bug is closed/fixed overrides display color and is not shown in pim. 
+
+Changes in achilles 0.0.1
+---------------------------
++ Initial version (never released). [Sandy]

@@ -1,0 +1,23 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+
+Changes in pinboard  1.1.0
+--------------------------
+* Made module ready for achievo based on Atk 5.x. (Bug #535) [Yury,Sandy]
+
+Changes in pinboard  1.0.2
+--------------------------
+* Fixed a bug in displaying old pin items. (bug #507) [Yury] 
+
+Changes in pinboard  1.0.1
+---------------------------
+* Fixed a bug in the Title url, thanks to Yuri for finding it. [Sandy]
++ Changed the layout a little bit. [Sandy]
+
+Changes in pinboard 1.0.0
+---------------------------
++ Initial version. [Sandy]

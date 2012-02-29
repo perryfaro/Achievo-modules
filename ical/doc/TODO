@@ -1,0 +1,11 @@
+Possible enhancements to add and updates of existing
+
+Complete?  Description
+---------- -------------------------------------
+
+[ ]        WebDav support so we can communicate back to achievo
+[ ]	       Make description text better readable for more ical clients
+[ ]	       Improve the todo with better descriptions and maybe a journal
+[ ]        Nicer documentation
+[ ]        Unittests or Webtests
+[X]        Support for other formats like vCalendar

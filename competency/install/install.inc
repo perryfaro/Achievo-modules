@@ -1,0 +1,15 @@
+<?php
+$setup->installNode("competency.competency");
+$setup->installNode("competency.competencyniveau");
+$setup->installNode("competency.competencyprofile");
+$setup->installNode("competency.competencydomain");
+$setup->installNode("competency.competencyprofilecomp");
+$setup->installNode("competency.competencyprofileperson");
+$setup->installNode("competency.competencycompanyview");
+$setup->installNode("competency.competenceplanning");
+$setup->installNode("competency.competencycomments");
+$setup->installNode("competency.alwaysshow");
+$setup->installNode("competency.competencyextra");
+$setup->installNode("competency.competencyprofileprivilege");
+$setup->setVersion(8);
+?>

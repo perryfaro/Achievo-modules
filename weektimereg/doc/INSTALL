@@ -1,0 +1,48 @@
+Installing the 'Weektimereg' Achievo module
+===========================================
+
+Read this first
+---------------
+Despite our efforts to keep this INSTALL file as accurate as possible, there
+might be situations in which the described procedure does not work.
+In this case send an email to ivo@achievo.org or to the mailinglist
+(achievo@achievo.org) and we will try to help you out.
+
+Requirements
+------------
+
+- A working Achievo installation, version 1.0 or higher.
+  The module has been tested with 1.0.0.
+  
+Installation Procedure
+----------------------
+
+1) Place the files from the module in your Achievo external modules directory. 
+   Preferably, this is a directory just outside the Achievo root. For example, 
+   if your Achievo installation is located in /var/www/html/achievo-1.0, put
+   this module in /var/www/html/achievo_modules/weektimereg.
+   
+2) Open up Achievo's config.inc.php file and locate the modules setting near
+   the bottom of the file. Add the following line to add the Weektimereg module
+   to Achievo:
+   
+   module("weektimereg", "../achievo_modules/weektimereg/");
+   
+   The first parameter is the name of the module, and should always be 
+   'weektimereg'. The second parameter points to the directory where the module
+   is located, relative to the directory of Achievo itself.
+
+   If required, add the following line to implement the ability to avoid 
+   entering time into activities that require Remarks. If the line is not 
+   present, this functionnality will not be present and you will be able to 
+   record time for any activity:
+
+   $config_weektimereg_hide_remarkrequired = true;
+   
+3) Grant access to users to the new features, using the profile editor in the
+   Employee menu. 
+   This module adds the access right "week registration" to the timereg module
+   in the profile editor.
+   
+4) Database installation of this module or upgrade is not necessary. 
+   See the README file for usage instructions.

@@ -1,0 +1,1 @@
+{atkfrontcontroller uri='competency/domainholes/show'}

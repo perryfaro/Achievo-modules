@@ -1,0 +1,20 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in Hourdeposit 1.0.2
+----------------------------
+* Updated German translation. [Udo]
+
+Changes in Hourdeposit 1.0.1
+----------------------------
++ Added start- and enddate to deposits. [Ivo]
++ Added status (active/archived) to deposits. [Ivo]
+* Fixed typo in English language file. [Ivo]
++ Added German translation. [Georg]
+
+Changes in Hourdeposit 1.0.0
+----------------------------
++ Initial version

@@ -1,0 +1,39 @@
+Installing the 'Profilesheet' Achievo module
+========================================
+
+Read this first
+---------------
+Depite our efforts to keep this INSTALL file as accurate as possible, there
+might be situations in which the described procedure does not work.
+In this case send an email to martijn@ibuildings.nl or to the mailinglist
+(achievo@achievo.org) and we will try to help you out.
+
+Requirements
+------------
+
+A working Achievo installation, version 1.4 or higher.
+The module has been tested with 1.4
+
+Installation Procedure
+----------------------
+
+1) Place the files from the module in your Achievo external modules directory. 
+   Preferably, this is a directory just outside the Achievo root. For example, 
+   if your Achievo installation is located in /var/www/html/achievo-1.4, put
+   this module in /var/www/html/achievo_modules/profilesheet.
+   
+2) Open up Achievo's config.inc.php file and locate the modules setting near
+   the bottom of the file. Add the following line to add the Moduleinfo module
+   to Achievo:
+   
+   module("profilesheet", "../achievo_modules/profilesheet/");
+   
+   The first parameter is the name of the module, and should always be 
+   'profilesheet'. The second parameter points to the directory where the module
+   is located, relative to the directory of Achievo itself.
+    
+3) If the installation went well, you should have a new menu item in Achievo
+   called 'Profilesheets'. (Don't forget you must grant access to users to the new module)
+
+4) See the README file for usage instructions.
+

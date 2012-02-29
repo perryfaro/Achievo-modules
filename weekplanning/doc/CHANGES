@@ -1,0 +1,26 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+
+Changes in WeekPlanning
+-----------------------
+- Removed supervisor filter in weekplanning per project. This filter
+  attribute didn't work. [Guido]
+* Conflict records in recordlist now use the appropriate highlight color
+  when you hover over them with the mouse. [Guido]
+* Fixed PHP notices. [Guido]
+* Fixed department filter in weekplanning per employee not being
+  recognized due to a coding typo. [Guido]
+* Fixed SQL error when requesting weekplanning per project in which hours
+  are assigned to an employee that was deleted. [Guido]
+* "Ingeplanned" should be "Ingepland". [Guido]
+* Fixed out-of-scope planned/booked filter value. [Guido]
+* Added missing classname to compare callback function reference in usort()
+  call. [Guido]
+* totals are now shown next to the projectname instead of inside the graph
+  to prevent totals being hidden behind a weekplanning bar. [Guido]
+* Planning totals are now based on the weekplanning. [Guido]
+* Fixed planning query. [Guido]

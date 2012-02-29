@@ -1,0 +1,36 @@
+Author
+------
+Ivo Jansch         <ivo@achievo.org>
+
+
+Translators
+-----------
+Translations for this module are currently only available in a few 
+languages..
+If you are willing to translate the module, please see the english.lng
+file in the languages/ directory and mail your translation to 
+translations@achievo.org. 
+
+The following people contributed translations:
+
+Danish: Morten Ørsted  <mo@moch.dk>
+Dutch : Ivo Jansch     <ivo@achievo.org>
+German: Georg Scheidel <Georg.Scheidel@philotech.net>
+
+
+Major Contributors
+------------------
+We like to thank the following people for their significant contributions to
+this module.
+
+Michiel Schalkx
+
+  Michiel made a first implementation of the planning script. It has later
+  been fully revised, but it has been a good starting point.
+
+  
+Other Contributors
+------------------
+We received bugfixes and other contributions from the following people:
+
+

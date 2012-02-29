@@ -1,0 +1,14 @@
+<?php
+$setup->dropTable("competency.competency");
+$setup->dropTable("competency.competencyniveau");
+$setup->dropTable("competency.competencyprofile");
+$setup->dropTable("competency.competencydomain");
+$setup->dropTable("competency.competencyprofilecomp");
+$setup->dropTable("competency.competencyprofileperson");
+$setup->dropTable("competency.competencycompanyview");
+$setup->dropTable("competency.competenceplanning");
+$setup->dropTable("competency.competencycomments");
+$setup->dropTable("competency.alwaysshow");
+$setup->dropTable("competency.competencyextra");
+$setup->setVersion(1);
+?>

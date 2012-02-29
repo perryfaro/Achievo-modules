@@ -1,0 +1,16 @@
+<?php
+
+  $nl = array(
+    "stock" => "Magazijn",
+    "menu_products" => "Artikelen",
+    "menu_handout" => "Uitgifte",
+    "product" => "Artikel",
+    "unitprice" => "Prijs p/stuk",
+    "product_id" => "Artikel",
+    "amount" => "Aantal",
+    "user_id" => "Geboekt door",
+    "phase_id" => "Project/Fase",
+    "handout" => "Magazijn uitgifte",
+  );  
+  
+?>

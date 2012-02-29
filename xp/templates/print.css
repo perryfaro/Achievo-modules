@@ -1,0 +1,63 @@
+@media screen {
+	table {
+		width: 700px;
+	}
+	.backlink {
+		visibility: visible;
+	}
+}
+@media print {
+	table {
+		width: 100%;
+	}
+	.backlink {
+		visibility: hidden;
+	}
+}
+@media screen,print {
+	body {
+		background: #ffffff;
+		color: #000000;
+		padding: 5px;
+		border: 0px;
+		margin: 0px;
+	}
+	body, td, th, div {
+		font: 11pt Times new roman, Times;
+	}
+	h1 {
+		padding: 0px;
+		border: 0px;
+		margin: 0px;
+		font: 20pt Arial, Helvetica Bold;
+	}
+	.estimate {
+		font: 22pt Arial, Helvetica Bold;
+		text-align: center;
+		padding: 8px 0px;
+	}
+	table {
+		border-collapse: collapse;
+		border-spacing: 0px;
+	}
+	tr {
+		vertical-align: top;
+	}
+	td.text {
+		height: 300px;
+		width: 100%;
+	}
+	td {
+		border: 2px solid #000000;
+		padding: 3px;
+	}
+	.borderlesstable td {
+		border: 0px;
+	}
+	.printtime {
+		text-align: right;
+	}
+	a, a:hover, a:visited, a:active {
+		color: #0000cc;
+	}
+}

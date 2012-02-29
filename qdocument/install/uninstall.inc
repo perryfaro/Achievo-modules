@@ -1,0 +1,5 @@
+<?php
+
+    $setup->dropTable("qdocument");    
+
+?>

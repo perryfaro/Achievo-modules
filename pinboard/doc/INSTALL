@@ -1,0 +1,41 @@
+Installing the 'Pinboard' Achievo module
+========================================
+
+Read this first
+---------------
+Depite our efforts to keep this INSTALL file as accurate as possible, there
+might be situations in which the described procedure does not work.
+In this case send an email to sandy@achievo.org or to the mailinglist
+(achievo@achievo.org) and we will try to help you out.
+
+Requirements
+------------
+
+A working Achievo installation, version 1.0.RC2 or higher.
+The module has been tested with 1.1RC3.
+
+Installation Procedure
+----------------------
+
+1) Place the files from the module in your Achievo external modules directory. 
+   Preferably, this is a directory just outside the Achievo root. For example, 
+   if your Achievo installation is located in /var/www/html/achievo-1.0, put
+   this module in /var/www/html/achievo_modules/pinboard.
+   
+2) Open up Achievo's config.inc.php file and locate the modules setting near
+   the bottom of the file. Add the following line to add the Pinboard module
+   to Achievo:
+   
+   module("pinboard", "../achievo_modules/pinboard/");
+   
+   The first parameter is the name of the module, and should always be 
+   'pinboard'. The second parameter points to the directory where the module
+   is located, relative to the directory of Achievo itself.
+    
+3) If the installation went well, you should have a new menu item in Achievo
+   called 'Pin board'. (You must grant access to users to the new menuitem,
+   using the profile editor in the Employee menu. Note that this is a feature
+   that is only intended for the administrators of the Achievo installation.)
+
+4) See the README file for usage instructions.
+

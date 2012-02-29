@@ -1,0 +1,18 @@
+Achievo 'Billing' Module usage instructions
+===========================================
+
+1. What is it?
+--------------
+The 'Billing' module is a module that adds financial functions such as bill
+and expense administration to Achievo.
+
+2. Assumptions
+--------------
+You have installed this module according to the installation
+instructions. Thise can be found in the billing/doc/INSTALL file.
+
+3. Instructions
+--------------
+Visual instructions about how to use this module are enclosed in the
+manual.pdf file (a pdf reader such as Adobe Reader is required to open this
+file).

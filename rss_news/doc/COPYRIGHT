@@ -1,0 +1,17 @@
+Achievo 'RSS News' Copyright and Licensing
+==========================================
+
+Achievo is copyright (c)2000-2004 Ibuildings.nl BV, Vlissingen, Netherlands.
+The 'RSS News' module is copyright (c)2004 Sandy Pleyte, Vlissingen, 
+Netherlands.
+
+The 'RSS News' module is distributed according to the GNU General Public
+License, which can be found in the LICENSE file.
+
+Third party software
+====================
+
+RSS News uses the MagpieRSS parser for parsing RSS feeds.
+MagpieRSS (http://magpierss.sourceforge.net/) is created by
+kellan (at) protest.net and made available under the General Public
+License (GPL). 

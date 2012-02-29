@@ -1,0 +1,29 @@
+<?php
+  // Dutch Achievo Profilesheet language file.
+  $nl = array(
+  "menu_certification_admin" => "Certificaten",
+  "menu_experience_category_admin" => "Ervaring groepen",
+  "menu_experience_admin" => "Ervaringen",
+  "menu_profilesheet_admin" => "Profile sheets",
+  "certification" => "Certificaat",
+  "description" => "Omschrijving",
+  "logo" => "Logo",
+  "experience_category" => "Ervaring groep",
+  "displayorder" => "Volgorde",
+  "experience" => "Ervaring",
+  "category_id" => "Groep",
+  "employee_id" => "Medewerker",
+  "office" => "Kantoor",
+  "birthdate" => "Geboortedatum",
+  "startdate" => "Datum in dienst",
+  "education" => "Opleiding",
+  "position" => "Functie",
+  "projects" => "Projecten",
+  "endorsements" => "Opmerkingen",
+  "photo" => "Foto",
+  "experiences" => "Ervaringen",
+  "certifications" => "Certificaten",
+  "last_modified_on" => "Laatst gewijzigd",  
+  );
+
+?>

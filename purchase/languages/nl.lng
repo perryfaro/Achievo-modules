@@ -1,0 +1,27 @@
+<?php
+
+  $nl = array(  
+     "bill_no" => "Factuurnummer",
+     "booked" => "Doorgeboekt",
+     "brutoprice" => "Bruto prijs",
+     "estimatedprice" => "Raming", 
+     "from"=>"van",
+     "menu_orders" => "Bestellingen",
+     "menu_purchasing" => "Inkoop",     
+     "nettoprice" => "Netto prijs",
+     "no_results" => "Er zijn geen resultaten gevonden die matchen met de opgegeven parameters.",
+     "order" => "Bestelling",     
+     "order_line" => "Bestelregel",
+     "order_report"=>"Bestelrapport",     
+     "orderlines" => "Bestelregels",
+     "project_id" => "Project",
+     "phase_id" => "Fase",
+     "purchase" => "Inkoop",
+     "purchase_order" => "Bestelling",          
+     "received" => "Ontvangen",     
+     "supplier_id" => "Leverancier",
+     "to"=>"tot",
+     "user_id" => "Ingevoerd door",
+  );  
+  
+?>

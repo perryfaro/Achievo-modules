@@ -1,0 +1,16 @@
+Achievo 'iCal' Copyright and Licensing
+==========================================
+
+Achievo is copyright (c)2000-2005 Ibuildings.nl BV, Vlissingen, Netherlands.
+The 'iCal' module is copyright (c)2005 Wouter van den Broek, Sittard, 
+Netherlands.
+
+The 'iCal' module is distributed according to the GNU General Public
+License, which can be found in the LICENSE file.
+
+iCal is a trademark of Apple Computer, Inc.
+
+Third party software
+====================
+
+iCal module uses the base class of the iCal class from Michael Wimmer

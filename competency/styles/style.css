@@ -1,0 +1,42 @@
+.tableheader
+{
+  background-color:#3366CC;
+  color: #FFFFFF;
+}
+
+.tableheader_today
+{
+  background-color: #FF0000;
+  color: #FFFFFF;
+}
+
+.table
+{
+  color: gray;
+  border: 1px solid black;
+}
+
+.th
+{
+	color: purple;
+	}
+.backtable
+{
+  background-color: green;
+}
+
+.row1
+{
+  background-color:660099;
+  border-style: solid;
+  border-width: 1px;
+}
+.row2
+{
+  background-color:622099;
+}
+
+.thead th
+{
+background-color: green;
+}

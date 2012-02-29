@@ -1,0 +1,61 @@
+<?php
+
+$en = array(
+
+  //carlease menu
+  'menu_carlease' =>'Leasecar',
+  
+  //carlease main
+  'carlease' => 'Leasecar',
+  'carlease_maintenance' => 'Maintenance',
+  'carlease_owner' => 'Owner',
+  'carlease_damage' => 'Damage',
+  'carlease_insurance' => 'Insurance',
+  'carlease_insurance_organization_id' => 'Insurance company',
+  'carlease_insurance_ownrisk' => 'Own risk',
+  'carlease_insurance_remark' => 'Remark',
+  'licensenumber' => 'License Number',
+  'carbrand' => 'Brand',
+  'cartype' => 'Type',
+  'current_owner' => 'Current owner',
+  'leasesum' => 'Leasesum',
+  'fueladvance' => 'Fuel advance',
+  'kmcontract' => 'Kilometers in contract',
+  'startdate' => 'Start contract',
+  'enddate' => 'End contract',
+  'maintenance' => 'Maintenance',
+  'leasecompany' => 'Leasecompany',
+  'leaseperiod' => 'Leaseperiod (month)',
+  'cataloguedprice' => 'Catalogued price',
+  'tankcardcompany' => 'Tankcardcompany',
+  'tankcardnr' => 'Tankcard number',
+  'tankcardcode' => 'Tankcard code',
+  'employeecontribution' => 'Employee contribution',
+  'taxcontribution' => 'Tax contribution',
+  'leasecontractnumber' => 'Lease contract number',
+  'fuel' => 'Fuel',
+  'diesel' => 'Diesel',
+  'gasoline' => 'Gasoline',
+  'lpg' => 'LPG',
+  
+  // carlease maintenance
+  'description' => 'Description',
+  'km' => 'Current km',
+  
+  // carlease owner
+  'taxcontributionstartdate' => 'Start tax contribution',
+  'taxcontributionenddate' => 'End tax contribution',
+  
+  // carlease damage
+  'damage' => 'Damage',
+  'date' => 'Date',
+  'amount' => 'Amount',
+  
+  //carleasecontracts.cron
+  "mail_subject_leasecontract" => "Leasecontract",
+  "mail_body_contract" => "The leasecontract of licensenumber",
+  "mail_body_expires" => "Expires on",
+  "mail_body_employee" => "This car is used by"
+  
+);
+?>

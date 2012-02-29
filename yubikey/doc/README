@@ -1,0 +1,28 @@
+'Yubikey' Achievo module usage instructions
+==============================================
+
+1. What is it?
+--------------
+The 'yubikeyd' module is a module that add yubikey
+(http://www.yubico.com/products/yubikey/) authentication to Achievo.
+
+
+2. Assumptions
+--------------
+1) You should have activated the yubikey module in Achievo. See the
+   doc/INSTALL file for instructions on how to install and activate the
+   module.
+2) You should have installed the PEAR yubikey package
+
+
+3. Instructions
+---------------
+After installation of the module, a new field 'yubikey' is added
+to edit screen of employee's. In this field you need to set a yubikey identity
+(the first 12 characters of any OTP from your device).
+
+IMPORTANT: Only the key itself is implemented now. For maximum security,
+you will need to add a password to the Yubikey to make it true
+multi-factor authentication.
+
+Questions may be posted on the Achievo forum at http://www.achievo.org/forum

@@ -1,0 +1,11 @@
+How to Install
+
+1. I don't found, how we can add custom field to the exists account and contact object. So we have to do it by hand:
+
+SETUP->App Setup->Customize->Contacts->Fields->Contact custom fields & relationships->New
+->Number->Next->Field label=>'ib_id'->External ID (check on)->Next->Next
+->Save
+
+
+2. Install module as usual Achievo module
+3. Copy sflink.inc.php (module skel dir) to Achievo configs dir

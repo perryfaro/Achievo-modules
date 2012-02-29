@@ -1,0 +1,61 @@
+<?php
+
+$nl = array(
+
+  //carlease menu
+  'menu_carlease' =>'Leaseauto',
+  
+  //carlease main
+  'carlease' => 'Leaseauto',
+  'carlease_maintenance' => 'Onderhoudsbeurten',
+  'carlease_owner' => 'Eigenaar',
+  'carlease_damage' => 'Schade',
+  'carlease_insurance' => 'Verzekering',
+  'carlease_insurance_organization_id' => 'Verzekeraar',
+  'carlease_insurance_ownrisk' => 'Eigen risico',
+  'carlease_insurance_remark' => 'Opmerkingen',
+  'licensenumber' => 'Kenteken',
+  'carbrand' => 'Merk',
+  'cartype' => 'Type',
+  'current_owner' => 'Huidige eigenaar',
+  'leasesum' => 'Leasebedrag',
+  'fueladvance' => 'Brandstofvoorschot',
+  'kmcontract' => 'Contract kilometers',
+  'startdate' => 'Start contract',
+  'enddate' => 'Einde contract',
+  'maintenance' => 'Onderhoud',
+  'leasecompany' => 'Leasemaatschappij',
+  'leaseperiod' => 'Leaseperiode (mnd)',
+  'cataloguedprice' => 'Catalogusprijs',
+  'tankcardcompany' => 'Tankpasmaatschappij',
+  'tankcardnr' => 'Tankpaskaartnr',
+  'tankcardcode' => 'Tankpas code',
+  'employeecontribution' => 'Eigen bijdrage',
+  'taxcontribution' => 'Bijtelling belastingdienst',
+  'leasecontractnumber' => 'Lease contract nummer',
+  'fuel' => 'Brandstof',
+  'diesel' => 'Diesel',
+  'gasoline' => 'Benzine',
+  'lpg' => 'LPG',
+  
+  // carlease maintenance
+  'description' => 'Beschrijving',
+  'km' => 'Huidige kilometerstand',
+  
+  // carlease owner
+  'taxcontributionstartdate' => 'Start zakelijke bijtelling',
+  'taxcontributionenddate' => 'Eind zakelijke bijtelling',
+  
+  // carlease damage
+  'damage' => 'Schade',
+  'date' => 'Datum',
+  'amount' => 'Bedrag',
+  
+  //carleasecontracts.cron
+  "mail_subject_leasecontract" => "Leasecontract",
+  "mail_body_contract" => "Het contract van kenteken",
+  "mail_body_expires" => "Verloopt op",
+  "mail_body_employee" => "Deze auto wordt gebruikt door"
+  
+);
+?>

@@ -1,0 +1,60 @@
+'Weektimereg' Achievo module usage instructions
+===============================================
+
+1. What is it?
+--------------
+With the 'weektimereg' module it is possible to register time for a complete
+week at once in stead of per day.
+              
+
+2. Assumptions
+--------------
+1) You should have activated the weektimereg module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+2) Users who need to work with the weekly timeregistration should have the 
+   proper access rights to the week timeregistration. Use the profile 
+   editor in the Employee menu to accomplish this. See alos the INSTALL file.
+  
+   
+3. Instructions
+---------------
+3.1 Managing weekly timeregistration.
+
+  The weektimreg management screen is quite self explanatory. Keep in mind
+  that time can only be registered per 15 minutes. Hours and minutes need
+  to be separated using a ":". 
+  Warning: when using both the day registration and the weekregistration the
+  weekregistration screen can remove the remarks of the day timeregistration
+  records and can also delete complete records of the day timeregistration.
+  (It merges them into a single record per activity per project per day.)
+  Questions may be posted on the Achievo mailinglist, to which you
+  can subscribe by sending an empty message to achievo-subscribe@achievo.org.
+
+3.2 Changing the number of projects listed.
+
+  All projects you already registered time on in a certain are shown in the
+  week screen. If there are less than 15 projects in the list, Achievo tries
+  to complete the list to 15 with projects you used recently before the 
+  selected week. You can change the number of entries that it tries to display by
+  adding $config_weektimereg_recentprojects = 25; to the config.inc.php file
+  of Achievo (where 25 is the number of projects you want to see). 
+  
+4. Known Issues
+---------------
+4.1 Focus problem in Mozilla
+  
+  In mozilla 1.5 and lower the javascript that is used by this module to 
+  validate if the user enters only a valid number of minutes does not work 
+  as expected in Mozilla (tested with Mozilla 1.5).
+  Javascript is used to validate the input of the minutes when losing focus
+  of the textbox. Normally if the input is not correct the focus is placed 
+  on the textbox again so the user cannot leave the textbox until the input
+  is correct. In Mozilla however, the message is displayed to the user, but
+  the focus leaves the field anyway.
+  (This is a known issue in mozilla, see their bugzilla entry for more info:
+  http://bugzilla.mozilla.org/show_bug.cgi?id=53579)
+  
+
+      

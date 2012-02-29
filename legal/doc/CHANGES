@@ -1,0 +1,14 @@
++ Added legal_projectdoctype translation. [Guido]
++ Added ability to set the target tab in a documenttype targetted at the
+  project (=case) node. [Guido]
++ Added missing part of update to change case/casetype names in directory
+  structure on update. [Guido]
+* Moved openingswords attribute from project_person to person table. [Guido]
+* Fixed translation of correspondence/pieces/other in directorynames when
+  adding a new case. [Guido]
+* Changed case folders to include the casetype description and case name.
+* Changed addcaselistener to use the case folders including casetype
+  description and case name. [Guido]
+* Changed case folders to include the casetype description and case name.
+* No filters should be applied to the projectnode when selecting data. [Guido]
+* Cleaned code. [Guido]

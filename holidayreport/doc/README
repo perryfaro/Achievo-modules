@@ -1,0 +1,105 @@
+'Holidayreport' Achievo module usage instructions
+===============================================
+
+1. What is it?
+--------------
+With the 'holidayreport' module it is possible to get reports of the hours
+users have for leave in a year.
+              
+
+2. Assumptions
+--------------
+1) You should have activated the holidayreport module in Achievo. See the 
+   doc/INSTALL file for instructions on how to install and activate the 
+   module.
+   
+2) Users who need to work with the holidayreports should have the 
+   proper access rights to the holidayreport menu. Use the profile 
+   editor in the Employee menu to accomplish this. See also the INSTALL file.
+  
+   
+3. Instructions
+---------------
+3.1 Managing corrections.
+
+  It is possible to set a number of corrections per user per year. This can be
+  used if a user has overtime left of last year that can be used as leave this
+  year. You can also use this to set the balance of last year for the first
+  year this module is used. After this year the balance can be calculated 
+  using a cronscript (see INSTALL).
+
+3.2 Managing leave types.
+  
+  Leave types are definitions of the different types of leave that are used. 
+  This will be used in defining the age rules. For example in The Netherlands 
+  you have something like basic leave (everyone gets basic leave), age leave 
+  (depending on the age you get extra leave hours) and senior leave (a special
+  arrangement for employees above 55 years).
+
+3.3 Managing age rules.
+
+  Age rules can be used to set an minimum age and maximum age to the value
+  that is set. 
+  For basic leave you can set age minimum and age maximum both to 0 and it
+  will be apply for all employees. The value is set in hours and will be used 
+  per month or per year (depending on the interpretation). There are three
+  different interpretations:
+  1. Year. The year type looks at the age an employee will reach in the
+     selected year. If that age is betwee nthe minimum and maximum age that
+     is set in the rule then the employee gets the hours that are set for the 
+     whole year (depending on the contract). For example: an employee is at 1. 
+     January 24 years old and will reach the age of 25 this year. If this
+     employee also has a contract for this year fulltime this employee gets
+     the hours for the whole year for his age.
+  2. Month before maximum. With this type you should remember the value set in 
+     the age rule is per month and not per year. This type applies when the
+     given maximum age is reached in the selected year. For the months that
+     the maximum age is not yet reached this rule will apply.
+  3. Month after maximum. With this type you should remember the value set in
+     the age rule is per month and not per year. This type applies when the 
+     given maximum age is reached in the selected year. For the months that 
+     the maximum age is already reached and in the month the maximum age is 
+     reached this rule will apply.
+  You can also set a start and endyear for these rules. 
+
+3.4 Holidayreport and holidayreport per employee
+
+  These are the reports in which is shown how many leave hours an employee
+  gets this year (based on the leave types and age rules) and how much he
+  already has used of this hours. In the phase edit screen (project edit 
+  and then phase edit) it is possible to see detail of the selected
+  activities. In this details screen you can set the field "holiday" to
+  indicate that this project - phase - activity combination will be used to 
+  calculate the hours that an employee has used for leave.
+  The age of an employee depends on his birthdate. You should check that is is
+  possible to set the employee birthdate in the employee menu. 
+
+3.5 Changing the config options.
+
+  The calculation of the hours per leave type is based on the contract hours
+  of the user in the selected year. The value that is set in the age rules is
+  based on the hours per year or month (depending on the type) and these hours
+  only apply fully if the contract hours are equal to the hours of a fulltime 
+  contract. If an employee only has a contract for 20 hours but a fulltime
+  employee works 40 hours this employee only gets 50% of the hours set in the 
+  age rules (if the rule applies). To set the hours that a fulltime employee 
+  works you can put:
+
+  $config["fulltime"] = 36;
+  
+  in the configs/holidayreport.inc.php. By default the module uses 40.
+  It is also possible to change the calculation of the balance of the leave
+  hours. Default it rounds the result in favour of the employee. You can
+  change this to unrounded by setting:
+  
+  $config["round"] = true;
+  
+
+4. Known Issues
+---------------
+The rule system works for many situations, but there are rules that will not
+fit. If you encounter a situtation where this module is not compatible with
+your company holiday regulations, feel free to file a bugzilla entry 
+(http://www.achievo.org/bugzilla) describing your holiday regulations.
+
+      

@@ -1,0 +1,22 @@
++ : new feature
+- : deprecated feature
+* : bugfix or changed code
+Bug numbers are references to bugs in http://www.achievo.org/bugzilla
+[names] are references to people in the AUTHORS file.
+
+Changes in crm 0.0.2
+---------------------------
++ Added 'Do not call' field to contact. [Sandy]
++ Added several Search boxes. [Sandy]
++ Added several display functions for usability. [Sandy]
++ Added 'http://' in front of the website edit box. [Sandy]
+* Made module ATK 5.3 compatible. [Yury, Sandy]
+* Extended language file. [Sandy]
+* Fixed lastmodifiedby attribute. [Sandy]
+* Costs in campaing is now a currency field. [Sandy]
+* Changed company classes into account classes. [Sandy]
+
+
+Changes in crm 0.0.1
+---------------------------
++ Initial version. [Sandy]

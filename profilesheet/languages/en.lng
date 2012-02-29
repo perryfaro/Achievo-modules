@@ -1,0 +1,29 @@
+<?php
+  // Achievo Profilesheet language file for English.
+  $en = array(
+  "menu_certification_admin" => "Certifications",
+  "menu_experience_category_admin" => "Experience categories",
+  "menu_experience_admin" => "Experiences",
+  "menu_profilesheet_admin" => "Profile sheets",
+  "certification" => "Certification",
+  "description" => "Description",
+  "logo" => "Logo",
+  "experience_category" => "Experience Category",
+  "displayorder" => "Order",
+  "experience" => "Experience",
+  "category_id" => "Category",
+  "employee_id" => "Employee",
+  "office" => "Office",
+  "birthdate" => "Date of birth",
+  "startdate" => "Start employment",
+  "education" => "Education",
+  "position" => "Position",
+  "projects" => "Projects",
+  "endorsements" => "Endorsements",
+  "photo" => "Photo",
+  "experiences" => "Experiences",
+  "certifications" => "Certifications",
+  "last_modified_on" => "Last modified",  
+  );
+
+?>

@@ -1,0 +1,22 @@
+'QDocument' Achievo module usage instructions
+=============================================
+
+1. What is it?
+--------------
+The 'qdocument' module is a an add-on for the 'quotation' module. It adds
+the ability to upload document files for a quotation. Multiple versions
+of the same document can be uploaded, and each version can have a status.
+
+
+2. Assumptions
+--------------
+1) You should have activated both the quotation and qdocument module in 
+   Achievo. See the doc/INSTALL file for instructions on how to install 
+   and activate the module.   
+
+   
+3. Instructions
+---------------
+
+The document upload capabilities appear in the edit screen of quotations.
+Functionality is quite self-explanatory.

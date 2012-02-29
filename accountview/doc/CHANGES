@@ -1,0 +1,7 @@
++ Added CHANGES file. [Guido]
++ Added ProjectDayNeedsUpdate node which contains data refering to projects
+  for which the timeregistrations have changed on specific dates since the
+  latest accountview export was performed. [Guido]
++ Added TimeregActionListener which populates the ProjectDayNeedsUpdate node
+  when timereg changes occur. [Guido]
++ Added translation for the Change abbreviation right. [Guido]

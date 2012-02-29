@@ -1,0 +1,44 @@
+Author
+------
+Lineke Willems         <lineke@achievo.org>
+
+
+Sponsors
+--------
+Development of the holidayreport module was sponsored by Kern 8
+(http://www.kern8.nl)
+
+
+Translators
+-----------
+Translations for this module are currently only available in a few
+languages. If you are willing to translate the module, please see the
+english.lng file in the languages/ directory and mail your translation to
+translations@achievo.org.
+                                                                           
+The following people contributed translations:
+                                                                         
+Dutch : Ivo Jansch     <ivo@achievo.org>
+German: Udo Werner     <udo_werner@gmx.net>
+
+
+Major Contributors
+------------------
+We like to thank the following people for their significant contributions to
+this module.
+
+Ellie van Heugten <ellie.van.heugten@kern8.nl>
+
+  Ellie came with the idea for the module, and was largely responsible for
+  the definition of desired functionality.
+
+Ivo Jansch
+  
+  Ivo has tested and helped designing this module.
+
+  
+Other Contributors
+------------------
+We received bugfixes and other contributions from the following people:
+
+

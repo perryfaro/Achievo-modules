@@ -1,0 +1,33 @@
+'Statusreport' Achievo module usage instructions
+=============================================
+
+1. What is it?
+--------------
+A status report is a periodical (e.g. weekly) review of the project status by
+the project manager. Some data is provided by the project manager when writing
+the review, other data is taken from Achievo.
+
+This module doesn't have separate menu item, but add tab with status report to 
+project edit screen and add new item(s) to PIM screen.
+
+2. Access rights.
+-----------------
+This module declare two specific rights - 'pm' (ProjectManager) and 'mt' (Management), 
+only users that have one(or both) of these rights have access to the information of the 
+status reports.
+
+For users with 'mt' rights this module add one specific option to user preferences -
+'show all flagged projects' - managers might want to always see ‘all flagged projects’
+by default.
+
+3. PIM items.
+--------------
+This module add two new PIM items - 'Your currently active projects' for project managers
+(users with 'pm' rights), and 'Projects you have MT ownership of' - for management (users
+with 'mt' rights). 
+
+'Your currently active projects' - projects where status is ‘active’ and hours have been
+booked in the last 14 days, and coordinator is set to the currently logged in user.
+
+'Projects you have MT ownership of' - all projects where status is ‘active’ that
+have ‘MT ownership’ set to the logged in manager.

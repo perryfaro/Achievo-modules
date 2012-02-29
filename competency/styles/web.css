@@ -1,0 +1,340 @@
+
+#loading {
+  display: none;
+  position: absolute;
+  left: = 50%;
+  z-index: 10;
+}
+
+#loadingComp {
+  display: none;
+}
+
+#competences {
+  height: auto;
+  width: auto;
+  overflow: auto;
+}
+
+#persons {
+  height: auto;
+  width: auto;
+  min-width: 800px;
+  overflow: hidden;
+  float: top;
+}
+
+/*Competence levels*/ /* NA = Not Acquired
+IP = In Profile
+PL = Planned
+L = legenda
+*/
+.level {
+  background-color: #c2d8ed; /*blue*/
+  padding: 10px;
+  border: solid black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/thumb_up.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+
+.level_NA {
+  background-color: #EEEEEE;
+  color: #a6a6a6; padding : 10px;
+  border: dashed black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: dashed black 1px;
+  padding: 10px;
+}
+
+.level_NA_PL {
+  background-color: #EEEEEE;
+  color: #a6a6a6; padding : 10px;
+  border: dashed black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: dashed black 1px;
+  padding: 10px;
+  background-image: url("../themes/default/Images/clock.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_IP {
+  background-color: #c2e158; /*green*/
+  border: solid black 1px;
+  margin: 1px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/tick.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_NA_IP {
+  background-color: #fffdc5; /*yellow*/
+  color: #a6a6a6;
+  border: dashed black 1px;
+  margin: 1px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/cross.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_NA_PL_IP {
+  background-color: #fffdc5; /*yellow*/
+  color: #a6a6a6;
+  border: dashed black 1px;
+  margin: 1px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/clock.png");
+    background-repeat: no-repeat;
+  background-position: bottom right;
+}
+/* We need differnt classes for the legenda otherwise our mouseovers and context menus will also work on the legende and we dont want this ofcourse*/
+.level_L {
+  background-color: #c2d8ed; /*blue*/
+  padding: 10px;
+  border: solid black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/thumb_up.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_NA_L {
+  background-color: #EEEEEE;
+  color: #a6a6a6;
+  padding: 10px;
+  border: dashed black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: dashed black 1px;
+}
+
+.level_IP_L {
+  background-color: #c2e158; /*green*/
+  border: solid black 1px;
+  margin: 1px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/tick.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_NA_IP_L {
+  background-color: #fffdc5; /*yellow*/
+  color: #a6a6a6;
+  border: dashed black 1px;
+  margin: 1px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/cross.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_NA_IP_PL_L {
+  background-color: #fffdc5; /*yellow*/
+  color: #a6a6a6;
+  border: dashed black 1px;
+  margin: 1px;
+  padding: 10px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  background-image: url("../themes/default/Images/clock.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.level_NA_PL_L {
+  background-color: #EEEEEE;
+  color: #a6a6a6; padding : 10px;
+  border: dashed black 1px;
+  margin: 1px;
+  width: 150px;
+  height: auto;
+  min-height: 60px;
+  float: left;
+  border: dashed black 1px;
+  padding: 10px;
+  background-image: url("../themes/default/Images/clock.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+}
+
+.group { /*background-color: #EBFFE5;*/ /*border: dashed gray 1px;*/
+  margin: 1px;
+  padding: 1px;
+  size: auto;
+}
+
+.groupborderless { /*background-color: #EBFFE5;*/
+  border: none;
+  margin: 1px;
+  padding: 1px;
+  size: auto;
+  min-height: 20px;
+  overflow: auto;
+}
+
+.domain { /**border: solid gray 1px;**/
+  border-bottom: solid gray 2px;
+  margin: 1px;
+  padding: 5px;
+  size: auto;
+}
+
+.domainborderless { /*	background-color: #E5EBFF;*/
+  border: none;
+  margin: 1px;
+  padding: 1px;
+  size: auto;
+}
+
+.compover {
+  position: absolute;
+  min-width: 200px;
+  min-height: 100px;
+  size: auto;
+  background-color: #FFFFCC;
+  border: solid gray 1px;
+}
+
+.myTable TABLE {
+  border: 1px solid;
+  empty-cells: show;
+  border-collapse: collapse;
+}
+
+.myTable TD {
+  border: 1px solid;
+  text-align: center;
+  empty-cells: show;
+  border-collapse: collapse;
+  background-color: #F0F0F0;
+}
+
+.myTable TD.toLow{
+  border: 1px solid;
+  text-align: center;
+  empty-cells: show;
+  border-collapse: collapse;
+  background-color: #fffdc5;
+}
+
+.myTable TD.good{
+  border: 1px solid;
+  text-align: center;
+  empty-cells: show;
+  border-collapse: collapse;
+  background-color: #c2e158;
+}
+
+.myTable TD.best{
+  border: 1px solid;
+  text-align: center;
+  empty-cells: show;
+  border-collapse: collapse;
+  background-color: #c2d8ed;
+}
+
+.legenda {
+  width: 360px;
+  padding: 10px;
+  height: 400;
+  border: dashed gray 2px;
+  position: absolute;
+}
+
+.comment {
+  width: auto;
+  padding: 10px;
+  height: auto;
+  background-color:#c2d8ed;
+  border: solid gray 1px;
+  position: absolute;
+}
+
+.help {
+  float: right;
+  position: absolute;
+}
+
+.overTable {
+  width: 300px;
+  padding: 5;
+}
+
+.nameCol {
+  font-weight: bold;
+}
+
+.todotable
+{
+  border: 1px solid;
+  width: 900px;
+}
+
+.todotable TD
+{
+  width:400px
+  vertical-align: top;
+}
+
+.todotable THEAD
+{
+  border-collapse: collapse;
+  background-color: #F0F0F0;
+}
+
+.todotable .domaincell
+{
+  border-top: 1px solid;
+}
+
+.alwaysshow
+{
+  font-size: 10px;
+}
