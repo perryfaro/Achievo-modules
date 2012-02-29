@@ -1,0 +1,38 @@
+Achievo modules Readme
+=======================
+
+VERSION ACHIEVO MODULES
+===========================
+1.0.0
+
+STABLE VERSION ACHIEVO
+=========================
+1.4.5
+
+you can download this version at:
+http://www.achievo.org/download.
+
+MODULES THAT WORK WITH THE LASTED STABLE ACHIEVO VERSION
+=================================================================
+See for more information about this the modules version file.
+
+-----------
+ABOUT
+------------
+Achievo modules is just a part of Achievo. These are separete modules that are not in the core function of Achievo. All the modules that have been made are locate here.
+
+-------------------------------------------------------
+HOW TO USE ACHIEVO MODULES
+-------------------------------------------------------
+
+When you are going to use one of the achievo modules. You should understand that the most modules not work propley yet with the lasted stable version. Also if you use an older version of achievo it might not work!
+
+---------------------------------------------------------------------------------------------------------------------------------
+HELP TO MAKE THE MODULES GET WORK WITH THE LASTED STABLE VERSION
+---------------------------------------------------------------------------------------------------------------------------------
+If you want to help, please fork achievo modules. You can make changes by your self and send them in a pull request. Or you can post bugs so we are able to fix these bugs.
+
+-------------------------------------
+DOWNLOAD MODULES
+-------------------------------------
+At this time you are only able to download all modules at once in the future we will change this.
