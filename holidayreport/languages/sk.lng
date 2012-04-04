@@ -5,7 +5,7 @@
   // Module: holidayreport
   // Language: Slovak (sk)
   //
-  // Translated by:
+  // Translated by: www.butteland.com
   //   
   //
   // If you want to add a new language to achievo, please translate this
@@ -16,47 +16,68 @@
   // Translation Tool.
   //
   $sk = array(
-  "add_correction" => "Add correction", // Missing string!!!
-  "correction" => "Correction", // Missing string!!!
-  "employeeholiday_report" => "Employee holiday report for", // Missing string!!!
-  "employeeholiday_report_balance" => "Balance", // Missing string!!!
-  "employeeholiday_report_balance_previousyear" => "Balance previous year", // Missing string!!!
-  "employeeholiday_report_leave_taken" => "Leave taken", // Missing string!!!
-  "employeeholiday_report_nocontract" => "Employee has no contract for the selected year.", // Missing string!!!
-  "employeeholiday_report_unavailable" => "Not available", // Missing string!!!
-  "explanation_roundinghours" => "After addition columns will be rounded to whole hours to the advantage of the employee", // Missing string!!!
-  "holidayreport" => "Report", // Missing string!!!
-  "holidayreport_balance" => "Balance", // Missing string!!!
-  "holidayreport_isholiday" => "Deduction of holidaybalance", // Missing string!!!
-  "holidayreport_lastyear" => "Last year", // Missing string!!!
-  "holidayreport_leave_taken" => "Leave taken", // Missing string!!!
-  "holidayreport_leave_type" => "Leavetype", // Missing string!!!
-  "holidayreport_rule" => "Leave rule", // Missing string!!!
-  "holidayreport_rule_aftermax" => "Hours/calendarmonth, in the year that the max age is reached, starting with the calendarmonth in which the maximum is reached", // Missing string!!!
-  "holidayreport_rule_age_max" => "Maximum age", // Missing string!!!
-  "holidayreport_rule_age_min" => "Minimum age", // Missing string!!!
-  "holidayreport_rule_beforemax" => "Hours/calendarmonth, in the year that the max age is reached, up to and including the last full calendarmonth before the max is reached", // Missing string!!!
-  "holidayreport_rule_beginyear" => "Valid from year", // Missing string!!!
-  "holidayreport_rule_endyear" => "Valid until year", // Missing string!!!
-  "holidayreport_rule_hourspermonth" => "Hours per calendarmonth", // Missing string!!!
-  "holidayreport_rule_hoursperyear" => "Hours per calendaryear", // Missing string!!!
-  "holidayreport_rule_type" => "Interpretation", // Missing string!!!
-  "holidayreport_rule_typeid" => "Leavetype", // Missing string!!!
-  "holidayreport_rule_year" => "Hours per calendaryear, starting with the year in which the minimum age will be reached", // Missing string!!!
-  "holidayreport_total_correction" => "Total correction", // Missing string!!!
-  "holidayreport_total_leave" => "Total leave", // Missing string!!!
-  "holidayreport_unrounded" => "Unrounded", // Missing string!!!
-  "leave" => "Leave", // Missing string!!!
-  "menu_correction_admin" => "Corrections", // Missing string!!!
-  "menu_holidayoverview" => "All-employee report", // Missing string!!!
-  "menu_holidayoverview_employee" => "Report per employee", // Missing string!!!
-  "menu_holidayreports" => "Holidayreports", // Missing string!!!
-  "menu_leave_type_admin" => "Leavetypes", // Missing string!!!
-  "menu_rule_admin" => "Holidayrules", // Missing string!!!
-  "reportdate" => "Reportdate", // Missing string!!!
-  "setyearfilter" => "Select which year you want to view", // Missing string!!!
-  "title_holidayreport" => "Holidayreport", // Missing string!!!
-  "year" => "Year", // Missing string!!!
+  "add_correction" => "Pridať opravu", 
+  "correction" => "Oprava", 
+  "deny"=>"Zamietnuť",
+  "edit_balance" => "Upraviť zostatok",
+  "employeeholiday_report" => "Report dovoleniek zamestnanaca pre rok", 
+  "employeeholiday_report_balance" => "Zostatok", 
+  "employeeholiday_report_balance_previousyear" => "Zostatok za predch. rok", 
+  "employeeholiday_report_leave_taken" => "Vybraté voľno", 
+  "employeeholiday_report_nocontract" => "Zamestnanec nemá pre zvolený rok vytvorenú žiadnu zmluvu.", 
+  "employeeholiday_report_unavailable" => "Nedostupné", 
+  "error_holiday_duration_exceeds_maximum_duration_of_%d_days"=>"Trvanie dovolenky prekračuje maximálne trvanie %d dní.",
+  "error_holidays_between_%d_and_%d_days_long_must_be_requested_%d_days_in_advance"=>"Dovolenka medzi %d a %d dňami musí byť zažiadaná %d dní vopred.",
+  "explanation_roundinghours" => "Hodnota bude následne zaokrúhlená na celé hodiny v prospech zamestnanca", 
+  "holidayhours" => "Počet hodín voľna",
+  "holidayreport" => "Report", 
+  "holidayreport_balance" => "Zostatok", 
+  "holidayreport_isholiday" => "Odpočet zostatku dovolenky", 
+  "holidayreport_lastyear" => "Minulý rok", 
+  "holidayreport_leave_taken" => "Vyčerpané voľno", 
+  "holidayreport_leave_type" => "Typ voľna", 
+  "holidayreport_rule" => "Pravidlo pre voľno", 
+  "holidayreport_rule_aftermax" => "Hodiny za kalendárny mesiac, kedy bol dosiahnutý maximálny vek, začínajúci kalendárnym mesiacom v ktorom bol dosiahnutý maximálny vek", 
+  "holidayreport_rule_age_max" => "Maximálny vek", 
+  "holidayreport_rule_age_min" => "Minimálny vek", 
+  "holidayreport_rule_beforemax" => "Hodiny za kalendárny mesiac, v roku, kedy bol dosiahnutý maximálny vek, do roku (vrátane) celého kalendárneho mesiaca, ktorý predchádza mesiacu, v ktorom bol dosiahnutý maximálny vek", 
+  "holidayreport_rule_beginyear" => "Platné od roku", 
+  "holidayreport_rule_endyear" => "Platné do roku", 
+  "holidayreport_rule_hourspermonth" => "Hodiny za kalendárny mesiac", 
+  "holidayreport_rule_hoursperyear" => "Hodiny za kalendárny rok", 
+  "holidayreport_rule_type" => "Preklad", 
+  "holidayreport_rule_typeid" => "Typy voľna", 
+  "holidayreport_rule_year" => "Hodiny pre kalendárny rok, ktorý sa začína rokom, v ktorom bol dosiahnutý minimálny vek.", 
+  "holidayreport_total_correction" => "Opravy spolu", 
+  "holidayreport_total_leave" => "Voľno spolu", 
+  "holidayreport_unrounded" => "Nezaokrúhlené", 
+  "advise" => "Odporúčanie",
+  "grant"=>"Schváliť",
+  "leave" => "Voľno", 
+  "leave_type" => "Typ voľna",
+  "menu_correction_admin" => "Opravy", 
+  "menu_holidayoverview" => "Report všetkých zamestnancov", 
+  "menu_holidayoverview_employee" => "Report dovoleniek", 
+  "menu_holidayreports" => "Dovolenky", 
+  "menu_leave_type_admin" => "Typy voľna", 
+  "menu_rule_admin" => "Pravidlá pre voľno", 
+  "reportdate" => "Dátum reportu", 
+  "setyearfilter" => "Vyberte rok, ktorý chcete zobraziť", 
+  "title_holidayreport" => "Report dovoleniek", 
+  "value" => "Hodnota",
+  "year" => "Rok", 
+  "pim_holidayreport_myrequests"=>"Posledné žiadosti o dovolenku",
+  "pim_holidayreport_reviews"=>"Žiadosti o dovolenku čakajúce na schválenie",
+  "menu_holidayrequest" => "Žiadosti o dovolenku",
+  "holidayrequest" => "Žiadosť o dovolenku",
+  "granted" => "Schválená",
+  "denied" => "Zamietnutá",
+  "menu_holidayrequest_review" => "Správa žiadostí o dovolenku",
+  "holidayrequest_review" => "Žiadosti o dovolenku",
+  "fromdate" => "Od",
+  "todate" => "Do",
+  "request" => "Žiadosť",
+  "review" => "Žiadosť musí schváliť",
 );
 
 ?>
