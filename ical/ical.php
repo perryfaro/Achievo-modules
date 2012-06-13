@@ -2,9 +2,6 @@
   //
   // iCal configuration options
   //
-  // Change the config_atkroot so it points to the achievo homedir
-  // 
-  $config_atkroot = "../../../achievo-local/";
    
   // The number of months that the events go back
   $monthsback = 1;
@@ -12,10 +9,10 @@
   $monthsahead = 3;
 
   // below there should be nothing to edit
-  include_once($config_atkroot."atk.inc");
-  include_once($config_atkroot."version.inc");
-  require_once($config_atkroot.moduleDir("ical")."includes/class.iCal.inc.php");
-  require_once($config_atkroot.moduleDir("ical")."tools.php");
+  include_once(../../atk.inc");
+  include_once(../../version.inc");
+  require_once("includes/class.iCal.inc.php");
+  require_once("tools.php");
   
   // check achievo version (if g_db exist it's 1.1 or earlier)
   if (is_object($g_db)) { $achievo = 1; } else { $achievo = 0; }
